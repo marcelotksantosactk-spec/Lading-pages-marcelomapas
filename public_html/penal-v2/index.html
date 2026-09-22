@@ -60,6 +60,53 @@ p{text-wrap:pretty}
   box-shadow:0 14px 34px -18px rgba(13,13,13,.5);
 }
 
+/* ---- comparador arrastável ---- */
+.cmp-box{
+  position:relative;margin:20px 0 0;border-radius:var(--raio);overflow:hidden;
+  border:1px solid var(--borda);box-shadow:0 14px 34px -18px rgba(13,13,13,.5);
+  user-select:none;touch-action:pan-y;cursor:ew-resize;
+}
+.cmp-box>img{display:block;width:100%;height:auto}
+.cmp-topo{position:absolute;top:0;left:0;bottom:0;width:50%;overflow:hidden}
+.cmp-topo img{display:block;height:100%;width:auto;max-width:none}
+.cmp-linha{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--laranja);transform:translateX(-50%);pointer-events:none}
+.cmp-alca{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;background:var(--laranja);color:#2a1f02;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.cmp-alca svg{width:22px;height:22px}
+.cmp-rot{
+  position:absolute;bottom:14px;padding:6px 12px;border-radius:100px;
+  font-weight:700;font-size:.72rem;letter-spacing:.04em;pointer-events:none;
+  background:rgba(0,0,0,.72);color:#fff;
+}
+.cmp-rot--esq{left:14px}
+.cmp-rot--dir{right:14px;background:var(--laranja);color:#2a1f02}
+.cmp-fonte{margin-top:10px;font-size:.76rem;color:var(--cinza-claro)}
+@media (prefers-reduced-motion:reduce){.cmp-box{scroll-behavior:auto}}
+
+/* ---- sumário recolhível ---- */
+.sumario{
+  margin-top:18px;border:1px solid var(--borda);border-radius:var(--raio);
+  background:var(--branco);overflow:hidden;
+}
+.sumario>summary{
+  cursor:pointer;padding:14px 16px;font-weight:700;color:var(--grafite);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;list-style:none;
+}
+.sumario>summary::-webkit-details-marker{display:none}
+.sumario>summary::after{content:"+";font-size:1.3rem;color:var(--verde);line-height:1}
+.sumario[open]>summary::after{content:"−"}
+.sumario>summary:focus-visible{outline:2px solid var(--verde);outline-offset:-2px}
+.sumario .conteudo{padding:0 16px 16px}
+.sumario h4{
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);
+  margin:12px 0 6px;font-weight:800;
+}
+.sumario ul{margin:0;padding-left:18px;color:var(--cinza);font-size:.92rem;line-height:1.7}
+
 /* ---- oferta ---- */
 .oferta{
   margin-top:22px;background:var(--creme);
@@ -228,12 +275,58 @@ footer a{color:var(--cinza);text-decoration:underline}
 <!-- ============ 3. O QUE RESOLVE, CONCRETAMENTE ============ -->
 <section class="compacta" style="background:var(--off)">
   <div class="wrap">
-    <h2>O mesmo artigo, do jeito que você vai lembrar</h2>
-    <p class="sub">Isto é uma página real do material, não uma simulação:</p>
-    <img class="amostra" src="img/03.webp" width="760" height="1040" loading="lazy"
-         alt="Página real do material mostrando um tipo penal decomposto em quadros, com ilustração e exemplo prático">
-    <img class="amostra" src="img/05.webp" width="760" height="1040" loading="lazy" style="margin-top:12px"
-         alt="Outra página do material, com esquema comparativo entre institutos do Direito Penal">
+    <h2>Arraste e veja: o mesmo artigo, dois formatos</h2>
+    <p class="sub">À esquerda, o art. 121 como ele aparece no vade mecum. À direita, o mesmo artigo no material. Arraste a alça.</p>
+
+    <div class="cmp-box" id="cmpBox" role="slider" tabindex="0"
+         aria-label="Comparação entre o texto corrido do Código Penal e o resumo ilustrado"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <img src="img/cmp-ilustrado.webp" width="900" height="1240" loading="lazy" decoding="async"
+           alt="O artigo 121 do Código Penal no resumo ilustrado, com o tipo decomposto em quadros">
+      <div class="cmp-topo" id="cmpTopo">
+        <img src="img/cmp-texto.webp" width="900" height="1240" loading="lazy" decoding="async"
+             alt="A mesma página do Código Penal em texto corrido, como no vade mecum">
+      </div>
+      <div class="cmp-linha" id="cmpLinha"></div>
+      <div class="cmp-alca" id="cmpAlca">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6 4 12l5 6M15 6l5 6-5 6"></path></svg>
+      </div>
+      <span class="cmp-rot cmp-rot--esq">Texto corrido</span>
+      <span class="cmp-rot cmp-rot--dir">No material</span>
+    </div>
+    <p class="cmp-fonte">O conteúdo é o mesmo e a lei continua sendo a fonte — muda o quanto disso fica na sua cabeça no dia da prova. Texto à esquerda: Código Penal, Decreto-Lei nº 2.848/1940.</p>
+
+    <details class="sumario">
+      <summary>Ver o sumário completo: 20 temas, Parte Geral e Parte Especial</summary>
+      <div class="conteudo">
+        <h4>Parte Geral · 13 temas</h4>
+        <ul>
+          <li>Princípios e Fontes do Direito Penal</li>
+          <li>Lei Penal no Tempo e no Espaço</li>
+          <li>Conflito Aparente de Normas</li>
+          <li>Teoria do Crime — conceito analítico, material e formal</li>
+          <li>Tipicidade e Conduta</li>
+          <li>Dolo, culpa, nexo causal e resultado</li>
+          <li>Ilicitude — legítima defesa e estado de necessidade</li>
+          <li>Culpabilidade e imputabilidade</li>
+          <li>Iter Criminis — tentativa e desistência voluntária</li>
+          <li>Concurso de crimes e concurso de pessoas</li>
+          <li>Penas, espécies e dosimetria</li>
+          <li>Regimes, progressão e livramento condicional</li>
+          <li>Extinção da Punibilidade — prescrição e decadência</li>
+        </ul>
+        <h4>Parte Especial · 7 temas</h4>
+        <ul>
+          <li>Crimes contra a Pessoa — homicídio e lesão corporal</li>
+          <li>Aborto e infanticídio</li>
+          <li>Crimes contra a honra</li>
+          <li>Crimes contra o Patrimônio — furto e roubo</li>
+          <li>Estelionato e receptação</li>
+          <li>Crimes contra a Administração Pública — peculato e corrupção</li>
+          <li>Prevaricação e demais crimes funcionais</li>
+        </ul>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -379,6 +472,61 @@ document.querySelectorAll('a[data-cta]').forEach(function(a){
     if(window.fbq) fbq('track','InitiateCheckout',{content_name:'Direito Penal Ilustrado',value:17,currency:'BRL',posicao:a.dataset.cta});
   });
 });
+
+// Comparador arrastável: texto corrido x material
+(function(){
+  var box=document.getElementById('cmpBox'); if(!box) return;
+  var topo=document.getElementById('cmpTopo'),
+      linha=document.getElementById('cmpLinha'),
+      alca=document.getElementById('cmpAlca'),
+      arrastando=false;
+
+  function aplica(pct){
+    pct=Math.max(0,Math.min(100,pct));
+    topo.style.width=pct+'%'; linha.style.left=pct+'%'; alca.style.left=pct+'%';
+    box.setAttribute('aria-valuenow',Math.round(pct));
+  }
+  function porPonteiro(x){
+    var r=box.getBoundingClientRect();
+    aplica((x-r.left)/r.width*100);
+  }
+
+  box.addEventListener('pointerdown',function(e){
+    arrastando=true;
+    try{ box.setPointerCapture(e.pointerId); }catch(err){}
+    porPonteiro(e.clientX);
+  });
+  box.addEventListener('pointermove',function(e){ if(arrastando) porPonteiro(e.clientX); });
+  window.addEventListener('pointerup',function(){ arrastando=false; });
+
+  box.addEventListener('keydown',function(e){
+    var atual=parseInt(box.getAttribute('aria-valuenow'),10)||50;
+    if(e.key==='ArrowLeft') atual-=5;
+    else if(e.key==='ArrowRight') atual+=5;
+    else return;
+    e.preventDefault(); aplica(atual);
+  });
+
+  // dica de movimento na primeira vez que aparece, respeitando quem pediu menos animação
+  var calmo=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!calmo && 'IntersectionObserver' in window){
+    var visto=false;
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(!en.isIntersecting||visto) return;
+        visto=true; io.disconnect();
+        var v=50,dir=1,n=0;
+        var t=setInterval(function(){
+          v+=dir*2; n++;
+          if(v>=64) dir=-1;
+          if(v<=50&&n>20){ clearInterval(t); aplica(50); return; }
+          aplica(v);
+        },26);
+      });
+    },{threshold:.5});
+    io.observe(box);
+  }
+})();
 </script>
 
 <!-- UTMify: mantém a atribuição igual à da página atual -->
