@@ -1,0 +1,74 @@
+# Arquivo de indice padrao
+DirectoryIndex index.html index.php
+
+# Servir arquivos sem extensao como HTML
+<Files ~ "^(ESPBIO|ESPHI|(BIO|DP|CP|CT|OAB)[0-9]+)$">
+    ForceType text/html
+</Files>
+
+# Compressao GZIP + Brotli para melhor velocidade
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/x-javascript text/x-component
+    # Remover encoding bugado de browsers antigos
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
+</IfModule>
+
+# Brotli (se disponivel no servidor)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache do navegador
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 6 months"
+    ExpiresByType image/jpeg "access plus 6 months"
+    ExpiresByType image/gif "access plus 6 months"
+    ExpiresByType image/png "access plus 6 months"
+    ExpiresByType image/webp "access plus 6 months"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType application/font-woff2 "access plus 6 months"
+    ExpiresByType application/font-woff "access plus 6 months"
+    ExpiresByType font/woff2 "access plus 6 months"
+</IfModule>
+
+# Cache-Control headers precisos
+<IfModule mod_headers.c>
+    # Cache longo para assets estaticos
+    <FilesMatch "\.(ico|jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2|ttf|eot)$">
+        Header set Cache-Control "max-age=15552000, public, immutable"
+    </FilesMatch>
+    # HTML nao cachear muito
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=3600, public, must-revalidate"
+    </FilesMatch>
+    # Preconnect para Facebook e Google Fonts
+    Header add Link "<//" + "connect.facebook.net>; rel=preconnect"
+    Header add Link "<//fonts.googleapis.com>; rel=preconnect"
+    Header add Link "<//fonts.gstatic.com>; rel=preconnect; crossorigin"
+</IfModule>
+
+# Keep-Alive para conexoes persistentes
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# Cabecalhos de seguranca
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Desativar ETags (evita revalidacao desnecessaria)
+FileETag None
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>

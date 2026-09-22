@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marcelo Mapas — Facilito sua Revisão!</title>
+<meta name="description" content="Mapas mentais, resumos visuais e materiais de estudo personalizados. Facilite sua revisão com Marcelo Mapas e aprenda mais em menos tempo!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:      #F8CC02;
+  --gold2:     #FFB103;
+  --blue:      #0294F8;
+  --green:     rgba(45,200,47,.91);
+  --bg:        #000000;
+  --bg2:       #0F0F0F;
+  --card:      #181818;
+  --light:     #DADADA;
+  --white:     #ffffff;
+  --gray:      #797979;
+  --lgray:     #BBBBBB;
+  --dkgray:    #4D4D4D;
+  --red:       #E24B4A;
+  --green2:    #3dc940;
+  --gold-dark: #c9a000;
+  --gold-lite: #ffe566;
+  --radius:    16px;
+  --maxw:      520px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  min-height:100vh;
+  background-image:
+    radial-gradient(800px circle at 50% -5%, rgba(248,204,2,.13), transparent 55%),
+    radial-gradient(600px circle at 90% 8%, rgba(2,148,248,.08), transparent 50%);
+  padding:32px 18px 48px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+/* AVATAR */
+.avatar{
+  width:108px;height:108px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:2.2rem;color:var(--bg);
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:3px solid var(--gold);
+  box-shadow:0 0 0 6px rgba(248,204,2,.12), 0 12px 36px rgba(248,204,2,.35);
+  animation:floatIn .7s ease both;
+}
+.name{margin-top:16px;font-size:1.45rem;font-weight:800;display:flex;align-items:center;gap:8px;animation:floatIn .7s .05s ease both;color:var(--white);}
+.handle{color:var(--lgray);font-size:.9rem;margin-top:3px;animation:floatIn .7s .1s ease both;}
+.bio{
+  margin-top:10px;font-size:1.05rem;font-weight:700;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:floatIn .7s .15s ease both;
+}
+/* SECTION */
+.section{width:100%;margin-top:28px;}
+.section-title{
+  font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gray);margin-bottom:14px;padding-left:4px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px;}
+/* BTN BASE */
+.btn{
+  position:relative;display:flex;align-items:center;gap:14px;width:100%;
+  text-decoration:none;color:var(--white);
+  background:var(--card);
+  border:1px solid var(--dkgray);
+  border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  transition:transform .18s ease, box-shadow .25s ease, border-color .25s ease;
+  overflow:hidden;animation:floatIn .6s ease both;
+}
+.btn .ico{font-size:1.5rem;flex-shrink:0;}
+.btn .txt{flex:1;text-align:left;}
+.btn .label{font-weight:600;font-size:1rem;line-height:1.2;color:var(--white);}
+.btn .price{
+  flex-shrink:0;font-size:.72rem;font-weight:700;
+  color:var(--gold);
+  background:rgba(248,204,2,.10);
+  border:1px solid rgba(248,204,2,.3);
+  padding:4px 10px;border-radius:20px;
+  white-space:nowrap;letter-spacing:.3px;
+  transition:background .2s,border-color .2s;
+}
+.btn .price .old{color:var(--gray);text-decoration:line-through;font-weight:500;margin-right:5px;font-size:.66rem;}
+.btn:hover .price{background:rgba(248,204,2,.2);border-color:rgba(248,204,2,.55);}
+.btn .arrow{color:var(--dkgray);font-size:1.1rem;transition:transform .2s,color .2s;}
+.btn::after{
+  content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(248,204,2,.07),transparent);
+  transform:skewX(-20deg);transition:none;
+}
+.btn:hover{transform:translateY(-3px);border-color:rgba(248,204,2,.45);box-shadow:0 10px 28px rgba(248,204,2,.14);}
+.btn:hover::after{left:130%;transition:left .7s ease;}
+.btn:hover .arrow{transform:translateX(4px);color:var(--gold);}
+/* FEATURE */
+.btn.feature{
+  background:linear-gradient(135deg,rgba(248,204,2,.10),rgba(255,177,3,.04));
+  border:1px solid rgba(248,204,2,.35);
+  padding:20px 18px;
+}
+.btn.feature .label{font-size:1.12rem;font-weight:700;}
+.btn.feature .price{font-size:.92rem;}
+.btn.feature:hover{box-shadow:0 14px 36px rgba(248,204,2,.22);}
+/* BADGE */
+.badge{
+  position:absolute;top:10px;left:12px;
+  background:var(--gold);color:var(--bg);
+  font-size:.62rem;font-weight:800;
+  padding:3px 9px;border-radius:20px;letter-spacing:.5px;
+  box-shadow:0 2px 8px rgba(248,204,2,.5);
+  animation:pulse 1.8s infinite;
+}
+/* STUDENT */
+.btn.student{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;justify-content:center;text-align:center;
+  box-shadow:0 8px 28px rgba(248,204,2,.35);
+}
+.btn.student .txt{flex:none;text-align:center;}
+.btn.student .label{color:var(--bg);font-weight:800;font-size:1rem;}
+.btn.student:hover{box-shadow:0 14px 36px rgba(248,204,2,.5);}
+footer{margin-top:36px;color:var(--gray);font-size:.8rem;text-align:center;line-height:1.6;}
+footer span{color:var(--gold);font-weight:600;}
+@keyframes floatIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.section .btn:nth-child(2){animation-delay:.05s;}
+.section .btn:nth-child(3){animation-delay:.1s;}
+.section .btn:nth-child(4){animation-delay:.15s;}
+.section .btn:nth-child(5){animation-delay:.2s;}
+.section .btn:nth-child(6){animation-delay:.25s;}
+.section .btn:nth-child(7){animation-delay:.3s;}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="avatar">MM</div>
+  <h1 class="name">⚖️ Marcelo Mapas</h1>
+  <p class="handle">@marcelomapas</p>
+  <p class="bio">📚 Facilito sua Revisão!</p>
+  <section class="section">
+    <h2 class="section-title">Destaques</h2>
+    <a class="btn feature" href="https://resumosmapasdireito.com/3-0/" target="_blank" rel="noopener">
+      <span class="badge">🔥 Mais vendido</span>
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Carreiras Policiais</span></span><span class="price"><span class="old">R$397</span> por R$197</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/OAB01" target="_blank" rel="noopener">
+      <span class="ico">🎓</span>
+      <span class="txt"><span class="label">OAB e Tribunais</span></span><span class="price">Por R$147</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pcmg/" target="_blank" rel="noopener">
+      <span class="ico">🕵️</span>
+      <span class="txt"><span class="label">Polícia Civil MG</span></span><span class="price">Por R$117</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pcsp/" target="_blank" rel="noopener">
+      <span class="ico">🕵️</span>
+      <span class="txt"><span class="label">Polícia Civil SP</span></span><span class="price">Por R$117</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pmma/" target="_blank" rel="noopener">
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Soldado PM-MA</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pmpa/" target="_blank" rel="noopener">
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Soldado PM-PA</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pmse/" target="_blank" rel="noopener">
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Soldado PM-SE</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pmsp/" target="_blank" rel="noopener">
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Soldado PM-SP</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pmto/" target="_blank" rel="noopener">
+      <span class="ico">🚔</span>
+      <span class="txt"><span class="label">Soldado PM-TO</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://marcelomapas.com/pprs/" target="_blank" rel="noopener">
+      <span class="ico">🔐</span>
+      <span class="txt"><span class="label">Polícia Penal RS</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://resumosmapasdireito.com/pcpe/" target="_blank" rel="noopener">
+      <span class="ico">🕵️</span>
+      <span class="txt"><span class="label">Polícia Civil PE</span></span><span class="price">Por R$167</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn feature" href="https://resumosmapasdireito.com/iapen/" target="_blank" rel="noopener">
+      <span class="ico">🔐</span>
+      <span class="txt"><span class="label">Polícia Penal AC</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+  </section>
+  <section class="section">
+    <h2 class="section-title">Disciplinas Jurídicas</h2>
+    <a class="btn" href="https://resumosmapasdireito.com/direito-penal" target="_blank" rel="noopener">
+      <span class="ico">⚖️</span>
+      <span class="txt"><span class="label">Direito Penal</span></span><span class="price">Por R$27</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://resumosmapasdireito.com/constitucional" target="_blank" rel="noopener">
+      <span class="ico">📜</span>
+      <span class="txt"><span class="label">Constitucional</span></span><span class="price">Por R$27</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://marcelomapas.com/administrativo02/" target="_blank" rel="noopener">
+      <span class="ico">🏛️</span>
+      <span class="txt"><span class="label">Dir. Administrativo</span></span><span class="price">Por R$15</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://pay.kiwify.com.br/Dhusxod" target="_blank" rel="noopener">
+      <span class="ico">📚</span>
+      <span class="txt"><span class="label">37 Leis Especiais</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://resumosmapasdireito.com/portugues-2/" target="_blank" rel="noopener">
+      <span class="ico">✍️</span>
+      <span class="txt"><span class="label">Português</span></span><span class="price">Por R$27</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://pay.kiwify.com.br/9X7QXlP" target="_blank" rel="noopener">
+      <span class="ico">🤝</span>
+      <span class="txt"><span class="label">Direito Civil</span></span><span class="price">Por R$27</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://marcelomapas.com/processopenal02/" target="_blank" rel="noopener">
+      <span class="ico">🔒</span>
+      <span class="txt"><span class="label">Processo Penal</span></span><span class="price">Por R$15</span>
+      <span class="arrow">›</span>
+    </a>
+    <a class="btn" href="https://pay.kiwify.com.br/jh066EV" target="_blank" rel="noopener">
+      <span class="ico">📂</span>
+      <span class="txt"><span class="label">Processo Civil</span></span><span class="price">Por R$27</span>
+      <span class="arrow">›</span>
+    </a>
+  </section>
+  <section class="section">
+    <h2 class="section-title">Outros</h2>
+    <a class="btn" href="https://resumosmapasdireito.com/enem-e-vestibulares/" target="_blank" rel="noopener">
+      <span class="ico">🎒</span>
+      <span class="txt"><span class="label">ENEM e Vestibulares</span></span><span class="price">Por R$97</span>
+      <span class="arrow">›</span>
+    </a>
+  </section>
+  <section class="section">
+    <h2 class="section-title">Comunidade</h2>
+    <a class="btn student" href="https://chat.whatsapp.com/DO6BPdbjQkq5loFBfwmnCe?s=cl&p=i&mlu=4&ilr=4" target="_blank" rel="noopener">
+      <span class="txt"><span class="label">💬 Comunidade do WhatsApp</span></span>
+    </a>
+  </section>
+  <footer>
+    © 2026 <span>Marcelo Mapas</span> – Facilito sua Revisão!
+  </footer>
+</main>
+</body>
+</html>

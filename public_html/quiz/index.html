@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0C0D10" />
+<title>Marcelo Mapas — Diagnóstico de Prontidão (Combo Policial)</title>
+<meta name="description" content="Marcelo Mapas: descubra seu nível de prontidão pro concurso policial. Mapas mentais ilustrados que fixam de verdade." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Marcelo Mapas — Diagnóstico de Prontidão" />
+<meta property="og:description" content="Marcelo Mapas: descubra seu nível de prontidão pro concurso policial." />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="https://lp.marcelomapas.com/img/hero-bg.jpg" />
+<meta property="og:url" content="https://quiz.marcelomapas.com/" />
+<meta property="og:image:width" content="1920" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Marcelo Mapas — Diagnóstico de Prontidão" />
+<meta name="twitter:description" content="Marcelo Mapas: descubra seu nível de prontidão pro concurso policial." />
+<meta name="twitter:image" content="https://lp.marcelomapas.com/img/hero-bg.jpg" />
+<link rel="canonical" href="https://quiz.marcelomapas.com/" />
+<link href="css/style.css" rel="stylesheet" />
+<link href="css/extra.css" rel="stylesheet" />
+</head>
+<body class="bg-carbon-950">
+<div class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-carbon-950 px-5 py-10">
+  <div class="pointer-events-none absolute inset-0 tactical-grid opacity-40" aria-hidden="true"></div>
+  <a href="https://lp.marcelomapas.com/" class="absolute left-5 top-5 z-10 flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-bone-500 transition-colors hover:text-bone">← Combo Policial</a>
+    <div id="quiz-root"></div>
+  </div>
+</div>
+<script src="js/quiz.js" defer></script>
+<script>
+(function(){
+  var VIDEO_SRC = 'video/VLS%20-%20OK%20.mov';
+  function attach(el){
+    if(!el || el.dataset.videoDone) return;
+    el.dataset.videoDone = '1';
+    var video = document.createElement('video');
+    video.className = el.className || 'absolute inset-0 block h-full w-full';
+    video.setAttribute('controls','');
+    video.setAttribute('playsinline','');
+    video.setAttribute('preload','metadata');
+    video.title = 'Vídeo de apresentação — Combo Policial';
+    video.setAttribute('controlsList','nodownload');
+    var source = document.createElement('source');
+    source.src = VIDEO_SRC;
+    video.appendChild(source);
+    video.appendChild(document.createTextNode('Seu navegador não suporta a reprodução de vídeo.'));
+    if(el.parentNode){ el.parentNode.replaceChild(video, el); }
+  }
+  function scan(){
+    document.querySelectorAll('vslplay-player').forEach(attach);
+  }
+  scan();
+  var mo = new MutationObserver(scan);
+  mo.observe(document.body, {childList:true, subtree:true});
+})();
+</script>
+</body>
+</html>

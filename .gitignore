@@ -1,0 +1,10 @@
+# Arquivos grandes demais para o git — vivem SÓ no servidor.
+# Nunca rode rsync com --delete: apagaria isso do ar.
+public_html/quiz/video/VLS
+public_html/lp/video/VLS
+public_html/biologia
+public_html/*.tar.gz
+public_html/.trash
+*.mov
+
+.DS_Store

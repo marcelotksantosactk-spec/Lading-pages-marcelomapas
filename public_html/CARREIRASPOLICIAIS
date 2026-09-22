@@ -1,0 +1,230 @@
+# Documentação de Design — Landing Page "Resumos Mapas Direito"
+
+> Engenharia reversa baseada em variáveis CSS (`:root`), classes Tailwind e estilos computados extraídos diretamente da página.
+
+---
+
+# 1. Design System
+
+## Paleta de cores completa
+
+A página utiliza duas paletas (modo escuro predominante + seções claras alternadas), controladas por CSS custom properties:
+
+| Token | Hex | Uso |
+|---|---|---|
+| `--bg` | `#0c0a08` | Background principal (hero, seções escuras) |
+| `--bg2` | `#131009` | Background secundário escuro |
+| `--bg3` | `#1a1610` | Footer / background terciário |
+| `--card` | `#1e1a13` | Fundo de cards em seções escuras |
+| `--border` | `#ff910c24` | Borda sutil (laranja a ~14% de opacidade) |
+| `--text` | `#f5f0e8` | Texto principal sobre fundo escuro |
+| `--muted` | `#9a9388` | Texto secundário sobre fundo escuro |
+| `--gold` | `#ff910c` | Cor primária (laranja) |
+| `--gold-light` | `#ffb347` | Variante clara do laranja (gradientes) |
+| `--gold-dark` | `#cc6f00` | Variante escura do laranja (gradientes) |
+| `--blue` | `#3d84cc` | Cor de apoio (glow de fundo) |
+| `--danger` | `#ef4444` | Estados de erro/alerta |
+| `--light` | `#f6f3ee` | Background das seções claras |
+| `--light-card` | `#fff` | Cards em seções claras |
+| `--light-border` | `#00000014` | Borda sutil em seções claras (preto ~8%) |
+| `--light-text` | `#141220` | Texto principal em seções claras |
+| `--light-muted` | `#6b6879` | Texto secundário em seções claras |
+
+**Cor primária:** laranja (`--gold #ff910c`) — usada em CTAs, ícones, badges e destaques de texto.
+**Cor secundária:** azul (`--blue #3d84cc`) — usada apenas como glow decorativo de fundo, baixa opacidade.
+
+## Gradientes
+
+```css
+/* Botão CTA principal */
+background: linear-gradient(135deg, #ffb347 0%, #ff910c 50%, #cc6f00 100%);
+
+/* Texto com gradiente (títulos de destaque) */
+.gold-grad {
+  background-image: linear-gradient(135deg, #ffb347, #ff910c);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Background decorativo do Hero */
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 30% 0%, #ff910c14 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, #3d84cc0f 0%, transparent 60%),
+    var(--bg);
+}
+```
+
+## Opacidade e variações
+
+As bordas e glows usam a notação hex de 8 dígitos para opacidade (ex: `#ff910c24` ≈ 14%, `#ff910c14` ≈ 8%, `#3d84cc0f` ≈ 6%, `#00000014` ≈ 8%). O navbar usa `rgba(12,10,8,0.92)` com `backdrop-blur` para o efeito de vidro fosco.
+
+---
+
+# 2. Tipografia
+
+- **Fonte única:** `Montserrat` (via `next/font`, com fallback `"Montserrat Fallback", sans-serif`), aplicada tanto em títulos quanto em corpo de texto.
+
+| Elemento | Tamanho | Peso | Line-height | Letter-spacing |
+|---|---|---|---|---|
+| Body | 16px | 400 | 24px (1.5) | normal |
+| H1 (Hero) | `1.7rem` → `2rem` (sm) → `2.6rem` (lg) responsivo | 900 (font-black) | 1.2 | normal |
+| H2 (headline seção) | ~20px | 900 | 1.3 | normal |
+| H3 (título de card) | ~15.2px (0.95rem) | 700 | 1.4 | normal |
+| Badge/label pequeno | 0.7rem | 700 | — | `0.1em` (tracking-wide) |
+| Botão CTA | ~15.2px–1.1rem | 800 | — | `0.08em` + uppercase |
+
+Os títulos usam classes Tailwind arbitrárias como `text-[1.7rem] sm:text-[2rem] lg:text-[2.6rem] font-black leading-[1.2]`.
+
+---
+
+# 3. Layout
+
+- **Container:** não há um único container fixo; a página usa múltiplas larguras máximas conforme a seção: `max-w-4xl`, `max-w-6xl`, e valores arbitrários (`max-w-[580px]`, `max-w-[600px]`, `max-w-[680px]`, `max-w-[780px]`) para textos e blocos centrais.
+- **Sistema:** Tailwind CSS (utility-first) combinado com CSS Modules/variáveis customizadas para tokens de cor e classes de componente reutilizáveis (`.btn-gold`, `.hero-bg`, `.gold-grad`).
+- **Grid/Flexbox:** cards de bônus usam CSS Grid (`grid grid-cols-1 sm:grid-cols-2 gap-4`); seção de disciplinas usa grid de 3 colunas; cards individuais (`article`) usam `flex flex-col`; listas de features usam `flex flex-col gap-[10px]`.
+- **Padding/margem padrão:** cards usam `p-6` (24px); espaçamento entre grid items `gap-4` (16px); margens de seção `mt-12` (48px), listas com `mb-9` (36px).
+- **Breakpoints (padrão Tailwind, confirmados em uso real):**
+  - `sm`: 640px
+  - `md`: 768px
+  - `lg`: 1024px
+  - `xl`: 1280px
+
+A página alterna seções de fundo escuro (`--bg`/`--bg3`) com seções de fundo claro (`--light`), criando um padrão "zebra" de contraste entre blocos (Hero escuro → Material claro → Disciplinas escuro → Depoimentos claro com bloco laranja → Comprar escuro → FAQ claro → Footer escuro).
+
+---
+
+# 4. Componentes
+
+## Navbar
+
+- **Altura:** ~64–70px em desktop (a leitura de 107px incluía padding extra em mobile).
+- **Comportamento:** `position: fixed` (em `sm+`; `absolute` no mobile inicial), `z-50`, com `transition-all duration-300` para suavizar mudanças ao rolar.
+- **Cor:** fundo `rgba(12,10,8,0.92)` com `backdrop-blur-[14px]` (efeito glassmorphism), borda inferior sutil em `--border`.
+- **Espaçamento entre itens:** links de navegação com `gap` moderado (~24–32px), item ativo sublinhado em laranja.
+class: "absolute sm:fixed top-0 left-0 right-0 z-50 border-b transition-all
+duration-300 border-[var(--border)] bg-[rgba(12,10,8,0.92)] backdrop-blur-[14px]"
+
+## Hero Section
+
+- **Layout:** `min-h-screen`, `flex items-start sm:items-center`, conteúdo alinhado à esquerda (texto) com imagem/mockup à direita.
+- **Background:** `.hero-bg` (radial gradients + cor sólida, ver seção 1).
+- **Título (H1):** fonte 900, responsivo de 1.7rem a 2.6rem, com um trecho do texto em `.gold-grad` (gradiente laranja aplicado ao texto via `background-clip: text`).
+- **Badge superior:** pill pequena, borda arredondada total, texto uppercase, tracking largo, cor laranja sobre fundo transparente com borda.
+- **Lista de benefícios:** ícones + texto, `flex flex-col gap-[10px]`.
+- **CTA button:** `.btn-gold.btn-pulse` (animação de pulso sutil), grande, canto arredondado 14px em telas maiores.
+- **Espaçamento:** `pt-30 sm:pt-20` para compensar a navbar fixa.
+
+## Seções intermediárias
+
+- **Cards de bônus:** `article` com `bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 flex flex-col`, label uppercase laranja acima do título (`text-[0.7rem] font-bold text-[var(--gold)] uppercase tracking-[0.1em]`).
+- **Grid de disciplinas:** grid de 3 colunas, cada card com ícone em caixa colorida, título em branco, contagem de páginas em laranja, link "ver tópicos" com seta; o card ativo/hover recebe borda laranja destacada.
+- **Depoimentos:** cards estilo "chat bubble" sobre um bloco de fundo laranja sólido, dentro de uma seção de fundo claro (`--light`).
+- **FAQ (accordion):** cards brancos com borda sutil, título + ícone de "+" à direita, sobre fundo claro.
+
+## Botões
+
+```css
+.btn-gold {
+  background: linear-gradient(135deg, #ffb347 0%, #ff910c 50%, #cc6f00 100%);
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 12px;
+  padding: 18px 36px;
+  font-weight: 800;
+  box-shadow: rgba(255, 145, 12, 0.35) 0 4px 30px 0;
+}
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: rgba(255, 145, 12, 0.5) 0 8px 40px;
+}
+.btn-gold:active { transform: scale(0.98); }
+.btn-gold-lg { border-radius: 14px; padding: 22px 44px; font-size: 1.1rem; }
+```
+
+Todos os botões usam texto preto sobre gradiente laranja (alto contraste), nunca fundo sólido único.
+
+## Inputs e formulários
+
+Não foram identificados formulários tradicionais (inputs de texto) na página analisada — a conversão é feita via botões CTA que direcionam para o checkout externo. Caso adicione formulários, mantenha consistência: fundo `--card`/`--light-card`, borda `--border`/`--light-border`, `border-radius` de 12px, e um estado de foco com anel laranja (`focus:ring-2 ring-[var(--gold)]`).
+
+---
+
+# 5. CSS / Tailwind equivalente
+
+```html
+<!-- Badge -->
+<span class="inline-block rounded-full border border-[var(--border)] text-[var(--gold)]
+  text-[0.7rem] font-bold uppercase tracking-[0.1em] px-4 py-2">
+  Oferta exclusiva
+</span>
+
+<!-- Título com destaque em gradiente -->
+<h1 class="text-[1.7rem] sm:text-[2rem] lg:text-[2.6rem] font-black leading-[1.2] mb-5 text-[var(--text)]">
+  Texto normal <span class="gold-grad">texto em destaque</span>
+</h1>
+
+<!-- Botão CTA -->
+<button class="btn-gold btn-pulse">Chamada para ação</button>
+
+<!-- Grid de cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
+  <article class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 flex flex-col">
+    <div class="text-[0.7rem] font-bold text-[var(--gold)] uppercase tracking-[0.1em] mb-[6px]">
+      Bônus 1
+    </div>
+    <h3 class="font-bold text-[var(--text)]">Título do card</h3>
+    <p class="text-[var(--muted)] text-[0.9rem]">Descrição breve.</p>
+  </article>
+</div>
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300
+  border-[var(--border)] bg-[rgba(12,10,8,0.92)] backdrop-blur-[14px]">
+  ...
+</nav>
+```
+
+---
+
+# 6. Tokens de Design
+
+```css
+:root {
+  /* Cores primárias */
+  --gold: #ff910c;
+  --gold-light: #ffb347;
+  --gold-dark: #cc6f00;
+
+  /* Backgrounds (modo escuro) */
+  --bg: #0c0a08;
+  --bg2: #131009;
+  --bg3: #1a1610;
+  --card: #1e1a13;
+  --border: #ff910c24;
+
+  /* Textos (modo escuro) */
+  --text: #f5f0e8;
+  --muted: #9a9388;
+
+  /* Cor de apoio */
+  --blue: #3d84cc;
+  --danger: #ef4444;
+
+  /* Backgrounds e textos (modo claro) */
+  --light: #f6f3ee;
+  --light-card: #ffffff;
+  --light-border: #00000014;
+  --light-text: #141220;
+  --light-muted: #6b6879;
+
+  /* Tipografia */
+  --font-primary: "Montserrat", "Montserrat Fallback", sans-serif;
+
+  /* Raios e espaçamentos padrão */
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --radius-button-lg: 14px;
+}
+```
