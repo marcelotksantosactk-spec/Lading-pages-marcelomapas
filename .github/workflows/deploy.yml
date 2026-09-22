@@ -1,0 +1,64 @@
+name: Publicar na Hostinger
+
+# Sobe o public_html deste repositório para marcelomapas.com a cada push na main.
+#
+# Usa rsync SEM --delete: nunca apaga nada no servidor. Isso é de propósito — o
+# servidor guarda 1,45 GB que não estão aqui (as duas VSLs de 613 MB, os dois
+# biologia.tar.gz). Um deploy com --delete apagaria as VSLs do ar.
+#
+# PARA ATIVAR: falta o secret SSH_PRIVATE_KEY (a chave privada da TAOS, hoje em
+# ~/.ssh/marcelo-hostinger na máquina do André). Criar o secret precisa de acesso
+# ADMIN neste repositório, que a TAOS ainda não tem. Sem o secret, o workflow sai
+# sem fazer nada, em vez de falhar. Quando o acesso vier:
+#     gh secret set SSH_PRIVATE_KEY < ~/.ssh/marcelo-hostinger
+# Enquanto isso, o deploy é manual e equivalente: ./deploy.sh --pra-valer
+
+on:
+  push:
+    branches: [main]
+    paths: ['public_html/**']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificar se a chave está configurada
+        id: chave
+        run: |
+          if [ -n "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
+            echo "tem=sim" >> "$GITHUB_OUTPUT"
+          else
+            echo "tem=nao" >> "$GITHUB_OUTPUT"
+            echo "::notice::Secret SSH_PRIVATE_KEY ausente — deploy automático ainda não ativado. Use ./deploy.sh --pra-valer localmente."
+          fi
+
+      - name: Preparar chave SSH
+        if: steps.chave.outputs.tem == 'sim'
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/hostinger
+          chmod 600 ~/.ssh/hostinger
+          ssh-keyscan -p 65002 -H 82.180.153.114 >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Enviar para a Hostinger
+        if: steps.chave.outputs.tem == 'sim'
+        run: |
+          # sem --delete, de propósito: ver comentário no topo deste arquivo
+          rsync -az --no-perms --no-owner --no-group -v \
+            -e "ssh -i ~/.ssh/hostinger -p 65002 -o BatchMode=yes" \
+            ./public_html/ \
+            u759412808@82.180.153.114:domains/marcelomapas.com/public_html/
+
+      - name: Conferir se o site respondeu
+        if: steps.chave.outputs.tem == 'sim'
+        run: |
+          codigo=$(curl -s -o /dev/null -w '%{http_code}' https://marcelomapas.com/penal/)
+          echo "https://marcelomapas.com/penal/ respondeu $codigo"
+          [ "$codigo" = "200" ] || { echo "::error::Site não respondeu 200 depois do deploy"; exit 1; }

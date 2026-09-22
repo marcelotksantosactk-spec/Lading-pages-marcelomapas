@@ -55,13 +55,41 @@ do André, fora deste repositório e fora de qualquer git. Servidor: porta 65002
 `u759412808`. Para dar acesso a outra máquina (a do Vitor, por exemplo), gere outra chave
 naquela máquina e cadastre a pública no mesmo lugar — não copie a chave privada.
 
-## Deploy automático de verdade (ainda não existe)
+## Deploy automático
 
-Hoje o deploy é um comando. Para virar automático a cada `git push`, o caminho é GitHub Actions
-com rsync por SSH, e falta uma coisa só: **acesso de admin neste repositório**, para cadastrar a
-chave privada como secret (`gh secret set`). Hoje a TAOS tem `push`, não `admin`. Quando o
-Marcelo conceder, o workflow é curto e entra em `.github/workflows/`.
+O workflow já está escrito em `.github/workflows/deploy.yml`: a cada push na `main` que mexa em
+`public_html/`, ele faz o mesmo rsync do `deploy.sh` e depois confere se o site respondeu 200.
 
-Alternativa: mover a fonte de verdade para um repositório na conta da TAOS, onde já temos admin,
-e convidar o Marcelo como colaborador. Decisão do André — a primeira opção mantém o site na mão
-do dono, que é o certo a longo prazo.
+**Falta uma coisa só para ligar:** o secret `SSH_PRIVATE_KEY` com a chave privada da TAOS. Criar
+secret exige acesso **admin** neste repositório, que a TAOS ainda não tem (só `push`). Sem o
+secret o workflow sai sem fazer nada, de propósito, em vez de falhar a cada push. Quando o
+Marcelo conceder admin:
+
+```bash
+gh secret set SSH_PRIVATE_KEY < ~/.ssh/marcelo-hostinger
+```
+
+Até lá, `./deploy.sh --pra-valer` faz exatamente a mesma coisa, em um comando.
+
+## Por que NÃO usamos o deploy nativo da Hostinger (Avançado > GIT)
+
+A Hostinger tem deploy a partir do GitHub no painel, e à primeira vista era o caminho óbvio. A
+documentação dela diz duas coisas que matam a ideia para este site:
+
+1. **"O diretório de destino precisa estar vazio para o primeiro deploy."** Conectar no
+   `public_html` exigiria **esvaziar a pasta inteira antes** — o site sai do ar e os 1,45 GB de
+   vídeo e tarball somem junto.
+2. **"Substitui os arquivos existentes naquele diretório a cada deploy."** A pasta passa a ser
+   controlada pelo repositório, e o que o Marcelo subir pelo painel dele vira passageiro.
+
+O rsync dos scripts daqui faz o mesmo trabalho sem nenhuma das duas coisas: não exige pasta
+vazia, não apaga o que não está no repositório, e convive com o Marcelo editando pelo painel.
+
+Documentação consultada em 22/09/2026: https://docs.hostinger.com/websites/git
+
+## Backup dos arquivos pesados
+
+Feito em 22/09/2026, dentro do próprio servidor, em `~/backup-taos-20260922` (1,5 GB): as duas
+VSLs e os dois `biologia.tar.gz`. Se algum dia algo apagar esses arquivos do `public_html`,
+restaurar é uma cópia local no servidor, questão de segundos — não precisa reenviar 1,2 GB pela
+internet.

@@ -1,8 +1,8 @@
-# Arquivos grandes demais para o git — vivem SÓ no servidor.
-# Nunca rode rsync com --delete: apagaria isso do ar.
-public_html/quiz/video/VLS
-public_html/lp/video/VLS
-public_html/biologia
+# Arquivos grandes demais para o git — vivem SÓ no servidor da Hostinger.
+# Backup deles em ~/backup-taos-20260922 no próprio servidor (feito em 22/09/2026).
+# NUNCA rode rsync com --delete: apagaria isso do ar.
+public_html/quiz/video/
+public_html/lp/video/
 public_html/*.tar.gz
 public_html/.trash
 *.mov
