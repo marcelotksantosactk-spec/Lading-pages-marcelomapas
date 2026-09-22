@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Direito Penal Ilustrado — 168 páginas em mapas mentais | Marcelo Mapas</title>
+<meta name="description" content="Direito Penal completo em mapas mentais, esquemas e mnemônicos. 168 páginas para revisar rápido e lembrar na hora da prova. R$17, acesso imediato, garantia de 7 dias.">
+<link rel="icon" href="img/01.webp">
+<meta property="og:title" content="Direito Penal Ilustrado — 168 páginas em mapas mentais">
+<meta property="og:description" content="Revisar a Parte Geral inteira numa tarde, em vez de reler o Código de novo. R$17, acesso imediato.">
+<meta property="og:image" content="https://marcelomapas.com/penal-v2/img/02.webp">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/02.webp">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --preto:#0d0d0d; --grafite:#2d2d2d; --cinza:#5a5a5a; --cinza-claro:#6b7280;
+  --creme:#fff9e3; --off:#f9fafb; --branco:#fff;
+  --verde:#0e7a49; --verde-claro:#12a05f; --laranja:#ff910c;
+  --borda:#e7e5e0;
+  --raio:14px; --raio-sm:10px;
+  --container:600px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Montserrat,system-ui,-apple-system,sans-serif;
+  color:var(--preto); background:var(--branco);
+  line-height:1.55; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--container);margin-inline:auto;padding-inline:20px}
+section{padding-block:44px}
+section.compacta{padding-block:32px}
+
+h1,h2,h3{line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(1.55rem,6.2vw,2.3rem);font-weight:800}
+h2{font-size:clamp(1.3rem,5vw,1.75rem);font-weight:800;margin-bottom:8px}
+h3{font-size:1.02rem;font-weight:700}
+p{text-wrap:pretty}
+.destaque{color:var(--verde)}
+.sub{color:var(--cinza);font-size:1.02rem;margin-top:14px}
+.rotulo{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--verde);
+  background:#eaf6ef;border:1px solid #cfe8da;
+  padding:6px 12px;border-radius:999px;margin-bottom:16px;
+}
+
+/* ---- dobra ---- */
+.dobra{padding-top:26px;padding-bottom:8px;background:linear-gradient(180deg,#fffdf6 0%,var(--branco) 100%)}
+.amostra{
+  margin:22px 0 4px;border-radius:var(--raio);overflow:hidden;
+  border:1px solid var(--borda);
+  box-shadow:0 14px 34px -18px rgba(13,13,13,.5);
+}
+
+/* ---- oferta ---- */
+.oferta{
+  margin-top:22px;background:var(--creme);
+  border:1px solid #f0e2b8;border-radius:var(--raio);
+  padding:20px;text-align:center;
+}
+.de{color:var(--cinza-claro);font-size:.92rem}
+.de s{text-decoration-thickness:1.5px}
+.preco{
+  font-size:clamp(2.5rem,11vw,3.3rem);font-weight:900;line-height:1;
+  letter-spacing:-.04em;margin:4px 0 2px;
+}
+.preco small{font-size:.42em;font-weight:700;vertical-align:.5em;margin-right:2px}
+.parcela{color:var(--grafite);font-size:.95rem;font-weight:600}
+.cta{
+  display:block;width:100%;margin-top:16px;
+  background:var(--verde);color:var(--branco);
+  font-family:inherit;font-size:1.06rem;font-weight:800;letter-spacing:-.01em;
+  text-align:center;text-decoration:none;
+  padding:18px 20px;border:0;border-radius:var(--raio-sm);
+  box-shadow:0 10px 22px -10px rgba(14,122,73,.75);
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.cta:hover{background:var(--verde-claro);box-shadow:0 12px 26px -10px rgba(14,122,73,.9)}
+.cta:active{transform:translateY(1px) scale(.995)}
+.cta:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+.selos{
+  margin-top:12px;color:var(--cinza);font-size:.83rem;font-weight:600;
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+}
+.selos span{white-space:nowrap}
+.selos span+span:before{content:"·";margin-right:6px;color:#c9c4bb}
+
+/* ---- listas ---- */
+.itens{list-style:none;display:grid;gap:13px;margin-top:20px}
+.itens li{display:flex;gap:11px;align-items:flex-start}
+.itens .ok{
+  flex:0 0 21px;height:21px;margin-top:2px;border-radius:50%;
+  background:#eaf6ef;color:var(--verde);
+  display:grid;place-items:center;font-size:.72rem;font-weight:900;
+}
+.itens .nao{background:#fdeceb;color:#c0392b}
+.itens b{font-weight:700}
+.itens span.txt{color:var(--grafite);font-size:.97rem}
+
+/* ---- bônus ---- */
+.bonus{display:grid;gap:12px;margin-top:18px}
+.bonus article{
+  border:1px solid var(--borda);border-radius:var(--raio-sm);
+  padding:15px 16px;background:var(--off);
+}
+.bonus .tag{
+  font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--laranja);display:block;margin-bottom:5px;
+}
+.bonus p{color:var(--cinza);font-size:.92rem;margin-top:3px}
+
+/* ---- prova ---- */
+.provas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.provas img{border-radius:var(--raio-sm);border:1px solid var(--borda)}
+.provas img:first-child{grid-column:1 / -1}
+
+/* ---- autoridade ---- */
+.autor{
+  margin-top:20px;background:var(--off);border:1px solid var(--borda);
+  border-radius:var(--raio);padding:20px;
+}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;text-align:center}
+.numeros div{background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio-sm);padding:12px 6px}
+.numeros b{display:block;font-size:1.28rem;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.numeros span{font-size:.72rem;color:var(--cinza);font-weight:600;line-height:1.3;display:block;margin-top:3px}
+
+/* ---- garantia ---- */
+.garantia{
+  background:var(--creme);border:1px solid #f0e2b8;border-radius:var(--raio);
+  padding:20px;margin-top:8px;
+}
+.garantia p{color:var(--grafite);font-size:.95rem;margin-top:8px}
+
+/* ---- faq ---- */
+.faq{margin-top:16px;display:grid;gap:0}
+.faq details{border-bottom:1px solid var(--borda)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:16px 30px 16px 0;position:relative;
+  font-weight:700;font-size:.98rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{
+  content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-size:1.4rem;font-weight:400;color:var(--verde);transition:transform .2s ease;
+}
+.faq details[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+.faq p{padding:0 0 16px;color:var(--cinza);font-size:.93rem}
+
+/* ---- fecho ---- */
+.fecho{background:var(--preto);color:var(--branco);text-align:center}
+.fecho h2{color:var(--branco)}
+.fecho .sub{color:#b8b8b8}
+.fecho .oferta{background:#1a1a1a;border-color:#333}
+.fecho .de{color:#999}
+.fecho .preco{color:var(--branco)}
+.fecho .parcela{color:#ccc}
+.fecho .selos{color:#999}
+
+/* ---- barra fixa mobile ---- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+  border-top:1px solid var(--borda);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;
+  transform:translateY(110%);transition:transform .28s ease;
+}
+.barra.aparece{transform:translateY(0)}
+.barra .txt{flex:1;min-width:0}
+.barra .txt b{display:block;font-size:1.06rem;font-weight:900;letter-spacing:-.03em;line-height:1.1}
+.barra .txt span{font-size:.72rem;color:var(--cinza);font-weight:600}
+.barra .cta{width:auto;margin:0;padding:13px 20px;font-size:.95rem;white-space:nowrap}
+body{padding-bottom:0}
+@media (min-width:640px){ .barra{display:none} }
+
+footer{padding:28px 0 40px;text-align:center;color:var(--cinza-claro);font-size:.78rem;line-height:1.7}
+footer a{color:var(--cinza);text-decoration:underline}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. DOBRA: problema + prova + preço + CTA ============ -->
+<header class="dobra">
+  <div class="wrap">
+    <span class="rotulo">Direito Penal · OAB, concursos e carreiras policiais</span>
+    <h1>Você já leu o Código Penal inteiro e <span class="destaque">ainda erra a questão na prova.</span></h1>
+    <p class="sub">O problema não é esforço. É que texto corrido não gruda. Este material é o Direito Penal completo em mapas mentais, esquemas e mnemônicos — 168 páginas para revisar rápido e lembrar na hora que importa.</p>
+
+    <img class="amostra" src="img/02.webp" width="760" height="1040"
+         alt="Página do material: Homicídio, com os artigos organizados em quadros coloridos, ilustrações e destaques" fetchpriority="high">
+
+    <div class="oferta">
+      <p class="de">De <s>R$ 57</s> — hoje por</p>
+      <p class="preco"><small>R$</small>17</p>
+      <p class="parcela">à vista, uma vez só</p>
+      <a class="cta" href="https://pay.kiwify.com.br/fbvV7j4" data-cta="dobra">Quero o Direito Penal ilustrado</a>
+      <p class="selos"><span>Acesso imediato</span><span>PDF para baixar e imprimir</span><span>7 dias de garantia</span></p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. NEGAÇÃO DE CATEGORIA ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Não é mais uma apostila.</h2>
+    <p class="sub">Apostila você lê uma vez e nunca mais abre, porque reler 400 páginas custa o mesmo que estudar do zero. Mapa mental você abre na véspera da prova e revisa a Parte Geral inteira numa tarde.</p>
+    <ul class="itens">
+      <li><i class="ok">✓</i><span class="txt"><b>Artigo por artigo, em quadro visual</b> — elementos do tipo, pena, competência e exceções na mesma página, não espalhados em capítulos.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Mnemônicos prontos</b> para o que só se resolve decorando, como rol de crimes e prazos.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Parte Geral e Parte Especial completas</b>, na ordem do Código, para acompanhar qualquer edital.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Feito para revisão</b>: a mesma página serve no primeiro estudo e na véspera.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. O QUE RESOLVE, CONCRETAMENTE ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>O mesmo artigo, do jeito que você vai lembrar</h2>
+    <p class="sub">Isto é uma página real do material, não uma simulação:</p>
+    <img class="amostra" src="img/03.webp" width="760" height="1040" loading="lazy"
+         alt="Página real do material mostrando um tipo penal decomposto em quadros, com ilustração e exemplo prático">
+    <img class="amostra" src="img/05.webp" width="760" height="1040" loading="lazy" style="margin-top:12px"
+         alt="Outra página do material, com esquema comparativo entre institutos do Direito Penal">
+  </div>
+</section>
+
+<!-- ============ 4. BÔNUS ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Vem com dois bônus</h2>
+    <p class="sub">Inclusos no mesmo R$17, sem pegadinha de upgrade depois.</p>
+    <div class="bonus">
+      <article>
+        <span class="tag">Bônus 1 · valor R$ 67</span>
+        <h3>Macetes, Dicas e Mnemônicos</h3>
+        <p>Quatro disciplinas, com as regras que caem sempre reduzidas a frase curta de memorizar.</p>
+      </article>
+      <article>
+        <span class="tag">Bônus 2 · valor R$ 57</span>
+        <h3>Manual da Memorização</h3>
+        <p>Como espaçar revisão e fixar conteúdo jurídico sem depender de reler tudo de novo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. PARA QUEM É / NÃO É ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>Para quem isso serve</h2>
+    <ul class="itens">
+      <li><i class="ok">✓</i><span class="txt">Quem vai prestar <b>concurso policial, OAB ou tribunais</b> e tem Direito Penal no edital.</span></li>
+      <li><i class="ok">✓</i><span class="txt">Quem <b>já estuda</b> e precisa de um jeito melhor de revisar o que já viu.</span></li>
+      <li><i class="ok">✓</i><span class="txt">Quem aprende melhor <b>vendo</b> do que lendo parágrafo corrido.</span></li>
+      <li><i class="nao">✕</i><span class="txt">Não serve para quem quer <b>videoaula</b> — aqui é material escrito e ilustrado, para consulta e revisão.</span></li>
+      <li><i class="nao">✕</i><span class="txt">Não serve como <b>curso completo do zero</b> se você nunca abriu o Código.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 6. PROVA SOCIAL ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>O que os alunos mandam</h2>
+    <p class="sub">Mensagens reais recebidas no direct, sem edição.</p>
+    <div class="provas">
+      <img src="img/12.webp" width="560" height="560" loading="lazy" alt="Aluno mostra o material aberto no tablet e comenta que ficou fácil estudar, material organizado">
+      <img src="img/08.webp" width="560" height="560" loading="lazy" alt="Mensagem de aluno elogiando o material para revisar e fixar o conteúdo">
+      <img src="img/09.webp" width="560" height="560" loading="lazy" alt="Mensagem de aluna comentando sobre a qualidade e a organização do material">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. AUTORIDADE (curta) ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>Quem faz</h2>
+    <div class="autor">
+      <p style="color:var(--grafite);font-size:.97rem">Marcelo dos Santos, advogado. Faz material ilustrado para concurso desde 2020, publicando quase todo dia. O Direito Penal é o material mais vendido da linha — e é o que mais reprova em prova.</p>
+      <div class="numeros">
+        <div><b>6 anos</b><span>fazendo material</span></div>
+        <div><b>95 mil</b><span>alunos atendidos</span></div>
+        <div><b>168</b><span>páginas no Penal</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. GARANTIA ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <div class="garantia">
+      <h2>Garantia de 7 dias, sem pergunta</h2>
+      <p>Baixe, abra todos os mapas e teste numa revisão de verdade. Se em até 7 dias achar que não é para você, peça o reembolso e devolvemos os R$17 integralmente — sem formulário, sem justificativa. Direito garantido pelo art. 49 do Código de Defesa do Consumidor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FAQ ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>Perguntas que sempre chegam</h2>
+    <div class="faq">
+      <details><summary>É material impresso ou digital?</summary><p>Digital, em PDF. Você recebe o acesso logo após o pagamento e pode ler no celular, no computador ou no tablet. Se preferir papel, está liberado para imprimir.</p></details>
+      <details><summary>Está atualizado?</summary><p>Sim, e as atualizações do material são gratuitas para quem já comprou — você recebe a versão nova sem pagar de novo.</p></details>
+      <details><summary>Cobre a Parte Geral e a Parte Especial?</summary><p>As duas, na ordem do Código Penal. São 168 páginas no total.</p></details>
+      <details><summary>Serve para o meu concurso?</summary><p>Serve para qualquer prova que cobre Direito Penal: carreiras policiais, tribunais, OAB. O conteúdo é o Código, não um edital específico.</p></details>
+      <details><summary>Quanto tempo tenho de acesso?</summary><p>O arquivo é seu. Baixou, é seu para sempre, sem mensalidade e sem prazo de expiração.</p></details>
+      <details><summary>Como pago?</summary><p>Pix ou cartão, pelo checkout da Kiwify. Pagamento único de R$17. No Pix o acesso sai na hora.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. FECHO ============ -->
+<section class="fecho">
+  <div class="wrap">
+    <h2>O Direito Penal inteiro, em mapas que você revisa numa tarde</h2>
+    <p class="sub">Material completo, dois bônus e garantia de 7 dias.</p>
+    <div class="oferta">
+      <p class="de">Material + 2 bônus valem <s>R$ 181</s> — hoje</p>
+      <p class="preco"><small>R$</small>17</p>
+      <p class="parcela">à vista, uma vez só</p>
+      <a class="cta" href="https://pay.kiwify.com.br/fbvV7j4" data-cta="fecho">Quero o Direito Penal ilustrado</a>
+      <p class="selos"><span>Acesso imediato</span><span>Atualizações grátis</span><span>7 dias de garantia</span></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Marcelo Mapas · MS Empreendimentos Ltda · CNPJ 45.522.478/0001-10<br>
+    Este material é de apoio ao estudo e não garante aprovação em concurso.<br>
+    Pagamento processado pela Kiwify.
+  </div>
+</footer>
+
+<!-- barra fixa mobile -->
+<div class="barra" id="barra">
+  <div class="txt"><b>R$ 17</b><span>à vista · garantia de 7 dias</span></div>
+  <a class="cta" href="https://pay.kiwify.com.br/fbvV7j4" data-cta="barra">Quero agora</a>
+</div>
+
+<script>
+// barra fixa aparece depois que a oferta do topo sai da tela
+(function(){
+  var oferta = document.querySelector('.dobra .oferta');
+  var barra = document.getElementById('barra');
+  if(!oferta || !barra || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(e){
+    barra.classList.toggle('aparece', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+  },{threshold:0}).observe(oferta);
+})();
+
+// Pixel da Meta — mesmo id da página atual, para o teste comparar no mesmo pixel
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','591918135496369');
+fbq('track','PageView');
+
+// InitiateCheckout em qualquer clique de compra, com o lugar do botão
+document.querySelectorAll('a[data-cta]').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(window.fbq) fbq('track','InitiateCheckout',{content_name:'Direito Penal Ilustrado',value:17,currency:'BRL',posicao:a.dataset.cta});
+  });
+});
+</script>
+
+<!-- UTMify: mantém a atribuição igual à da página atual -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subid async defer></script>
+</body>
+</html>
