@@ -3,7 +3,7 @@ from PIL import Image
 m=np.array(Image.open('/Users/andreoliveira/marcelomapas-site/public_html/oab-v2/img/dobra-oab.webp').convert('RGB'))[:,:,::-1].copy()
 old=cv2.imread('/Users/andreoliveira/marcelomapas-site/referencias-oab-v2/01-mockup/capa-livro-oab.png')
 new=cv2.imread('capa-tjsp.png')
-H=np.load('/tmp/H.npy')
+H=np.load('homografia-capa.npy')
 sz=(m.shape[1],m.shape[0])
 wo=cv2.warpPerspective(old,H,sz,flags=cv2.INTER_CUBIC)
 wn=cv2.warpPerspective(new,H,sz,flags=cv2.INTER_CUBIC)
@@ -29,5 +29,5 @@ alpha=cv2.GaussianBlur(alpha,(3,3),0)[...,None]
 out=(m*(1-alpha)+lit*alpha).astype(np.uint8)
 cv2.imwrite('occ.png',keep)
 Image.fromarray(out[:,:,::-1]).save('dobra-tjsp.png')
-Image.fromarray(out[:,:,::-1]).save('/Users/andreoliveira/marcelomapas-site/public_html/tjsp-dobra-preview.jpg') if False else None
+Image.fromarray(out[:,:,::-1]).save('x') if False else None
 print('ok', keep.sum()//255)

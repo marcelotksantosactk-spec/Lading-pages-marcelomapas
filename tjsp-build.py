@@ -117,7 +117,87 @@ rep('https://pay.kiwify.com.br/TGerrqk', CHECKOUT, s.count('https://pay.kiwify.c
 # ---------- rodapé: crédito das fotos ----------
 rep('Material didático de apoio aos estudos, sem vínculo com bancas organizadoras ou órgãos públicos.',
     'Material didático de apoio aos estudos, sem vínculo com o Tribunal de Justiça de São Paulo, bancas organizadoras ou órgãos públicos. '
-    'Foto do Palácio da Justiça: Catherine Gaspar, Wikimedia Commons, CC BY-SA 4.0.')
+    'Fotos do Palácio da Justiça (Wikimedia Commons): Catherine Gaspar e Rodrigo Tetsuo Argenton, CC BY-SA 4.0; '
+    'Dornicke, CC BY 3.0. Ícones: Tabler Icons (MIT).')
+
+# ---------- tema visual TJSP ----------
+# Cores do brasão (referencias-tjsp/01-marca-tjsp/PALETA.md) e o jeito decorativo dos criativos da
+# Gaby no Tribunal: ícones de tribunal em traço fino no fundo, faixa da bandeira de SP, fotos do
+# Palácio da Justiça nas seções escuras. Só cor e decoração: texto e estrutura não mudam.
+DOBRA = 'dobra-tjsp-v2.webp'   # nome novo a cada troca: o Cloudflare guarda imagem por 180 dias
+rep('src="img/dobra-tjsp.webp"', f'src="img/{DOBRA}"')
+rep('https://marcelomapas.com/tjsp/img/og-tjsp.jpg', 'https://marcelomapas.com/tjsp/img/og-tjsp-v2.jpg')
+
+FAIXA_SP = '<div class="tj-faixa-sp" aria-hidden="true"></div>'
+rep('<section class="relative flex items-start sm:items-center pt-30 sm:pt-20 overflow-hidden hero-bg is-light el-hero">',
+    '<section class="relative flex items-start sm:items-center pt-30 sm:pt-20 overflow-hidden hero-bg is-light el-hero">' + FAIXA_SP)
+rep('<section id="compre" class="ck-sec">',
+    '<div class="tj-cupula" aria-hidden="true"></div><section id="compre" class="ck-sec">')
+
+TEMA = '''<style id="tema-tjsp">
+:root,.is-light{--tj-red:#B3151B;--tj-red2:#8F1015;--tj-navy:#101820;--tj-navy2:#18222D;
+ --tj-gold:#C9A646;--tj-gold-l:#E3C766;--tj-gold-d:#8C7A2E;--tj-creme:#F7F0E2;
+ --gold:#C9A646;--gold-light:#E3C766;--gold-dark:#8C7A2E}
+/* faixa da bandeira de SP no alto da dobra */
+.tj-faixa-sp{position:absolute;top:0;left:0;right:0;height:22px;z-index:20;
+ background:linear-gradient(90deg,var(--tj-red) 0 70px,transparent 70px),
+ repeating-linear-gradient(180deg,var(--tj-navy) 0 4.4px,#F8F8F8 4.4px 8.8px);
+ box-shadow:0 2px 0 var(--tj-gold)}
+/* fundo creme com ícones de tribunal em traço fino */
+.el-hero,.tira-sec,.bn-sec,.ck-sec,.el-hl,.tm-sec{background-color:var(--tj-creme)!important;
+ background-image:url(img/padrao-claro.svg)!important;background-size:440px 440px!important}
+.el-hero{background-image:radial-gradient(ellipse at 50% 62%,rgba(201,166,70,.28),transparent 58%),url(img/padrao-claro.svg)!important;
+ background-size:auto,440px 440px!important}
+.hero-amostra img{filter:drop-shadow(0 18px 30px rgba(16,24,32,.18))}
+/* seções escuras: fachada do Palácio sob azul-noite */
+.sec-escura{background:linear-gradient(180deg,rgba(16,24,32,.84),rgba(16,24,32,.93)),url(img/palacio-fachada.webp) center/cover!important;
+ border-top:3px solid var(--tj-gold);border-bottom:3px solid var(--tj-gold)}
+.sec-escura article{background:rgba(255,255,255,.045)!important;border-color:rgba(227,199,102,.22)!important;border-top-color:var(--tj-gold)!important}
+.sec-escura svg{color:var(--tj-gold-l)}
+.sec-escura .tag,.cmp-tag{color:var(--tj-gold-l)!important;border-color:rgba(227,199,102,.4)!important;background:rgba(227,199,102,.08)!important}
+/* faixa da cúpula antes da oferta */
+.tj-cupula{height:190px;background:linear-gradient(180deg,rgba(16,24,32,.25),rgba(16,24,32,.45)),url(img/palacio-cupula.webp) center/cover;
+ border-top:3px solid var(--tj-gold);border-bottom:3px solid var(--tj-gold)}
+@media(min-width:768px){.tj-cupula{height:260px}}
+/* destaques */
+.gold-grad,.el-hero .gold-grad,h1 .gold-grad{background:none!important;color:var(--tj-red)!important;-webkit-text-fill-color:var(--tj-red)!important}
+.sec-escura .gold-grad{color:var(--tj-gold-l)!important;-webkit-text-fill-color:var(--tj-gold-l)!important}
+.el-kicker,.au-kicker{color:var(--tj-red)!important}
+.tira-tag,.ck-badge,.bn-tag,.el-hl-kicker{background:linear-gradient(135deg,var(--tj-gold-l),var(--tj-gold))!important;color:#2A2208!important}
+.ck-val,.ck-val small{color:var(--tj-red)!important}
+.sm2-ck,.el-hl-check,.of-chk{color:var(--tj-red)!important}
+.ck-ok{background:var(--tj-navy)!important;color:var(--tj-gold-l)!important}
+.tm-stars svg,.tm-nota span{color:var(--tj-gold)!important}
+.tm-dot.on,.amt-dot.on{background:var(--tj-red)!important}
+.el-hero .tag{border-color:rgba(179,21,27,.25)!important;background:rgba(255,255,255,.75)!important}
+/* botões de compra: vermelho do brasão, texto branco */
+.btn-gold,.ck-cta,.tira-cta,.el-hl-btn,.el-cta,.of-cta--main,.ir-btn{background:linear-gradient(180deg,#C8191F,var(--tj-red2))!important;
+ color:#fff!important;box-shadow:0 6px 22px rgba(179,21,27,.32),inset 0 -2px 0 rgba(0,0,0,.18)!important;border:1px solid rgba(227,199,102,.55)!important}
+.btn-gold:hover,.ck-cta:hover,.tira-cta:hover,.ir-btn:hover{filter:brightness(1.07)}
+.ck-sub b{color:var(--tj-red)!important}
+.dp-selo--data{color:var(--tj-red)!important;background:rgba(179,21,27,.07)!important;border-color:rgba(179,21,27,.3)!important}
+.dp-selo--data span{color:var(--tj-red)!important}
+.dp-selo--data i{background:var(--tj-red)!important;color:var(--tj-red)!important}
+.rd-selo svg{color:var(--tj-red)!important}
+.tm-tag svg{color:var(--tj-gold-l)!important}
+.ck-card{border-color:var(--tj-gold)!important;box-shadow:0 14px 40px rgba(16,24,32,.10),0 0 0 4px rgba(201,166,70,.12)!important}
+</style>'''
+TEMA = TEMA.replace('.hero-amostra img{filter:drop-shadow(0 18px 30px rgba(16,24,32,.18))}',
+    '.hero-amostra img{mix-blend-mode:multiply}')
+
+
+def prefixa(css, pre='#tj '):
+    """Prefixa cada seletor com o id do body, para o tema ganhar das ~60 folhas de estilo herdadas."""
+    def um(m):
+        sels = m.group(1)
+        if sels.strip().startswith((':root', '@')):
+            return m.group(0)
+        return ','.join(pre + x.strip() for x in sels.split(',')) + '{'
+    return re.sub(r'(?m)(?<=[}\n])([^{}@/]+)\{', um, css)
+
+
+rep('<body', '<body id="tj"')
+rep('</body>', prefixa(TEMA) + '</body>')
 
 visivel = re.sub(r'<(script|style)[\s\S]*?</\1>', '', s).replace('quem estuda para a OAB, para concursos', '')
 for resto in ('OAB', 'oab-v2', '1ª fase', '16 disciplinas', 'TGerrqk'):
@@ -140,11 +220,37 @@ def webp(origem, nome, largura):
     im.save(f'{DEST}/img/{nome}', 'WEBP', quality=82, method=6)
 
 
-webp(f'{REF}/dobra-tjsp.png', 'dobra-tjsp.webp', 980)
+webp(f'{REF}/03-dobra-atual/dobra-tjsp.png', DOBRA, 980)
+webp(f'{REF}/02-fotos-tjsp/foto-14.jpg', 'palacio-fachada.webp', 1600)
+cup = Image.open(f'{REF}/02-fotos-tjsp/foto-02.jpg').convert('RGB')
+alt = round(cup.width * 0.36)   # só a faixa que aparece na página (proporção ~16:6)
+topo = round(cup.height * 0.20)
+cup.crop((0, topo, cup.width, topo + alt)).resize((1400, round(1400 * alt / cup.width)), Image.LANCZOS) \
+   .save(f'{DEST}/img/palacio-cupula.webp', 'WEBP', quality=72, method=6)
+shutil.copy(f'{REF}/04-icones/padrao-claro.svg', f'{DEST}/img/padrao-claro.svg')
+
+# imagem de compartilhamento (og), na paleta do TJSP
+from PIL import ImageDraw, ImageFont
+og = Image.new('RGB', (1200, 630), (247, 240, 226))
+padrao_bg = Image.open(f'{DEST}/img/palacio-cupula.webp').convert('RGB').resize((1200, 900)).crop((0, 135, 1200, 765))
+og = Image.blend(og, padrao_bg, 0.10)
+dobra = Image.open(f'{REF}/03-dobra-atual/dobra-tjsp.png').convert('RGB')
+dobra = dobra.resize((round(dobra.width * 600 / dobra.height), 600), Image.LANCZOS)
+og.paste(dobra, (1200 - dobra.width + 10, 15))
+d = ImageDraw.Draw(og)
+d.rectangle((0, 0, 1200, 14), fill=(16, 24, 32))
+d.rectangle((0, 0, 90, 14), fill=(179, 21, 27))
+d.rectangle((0, 14, 1200, 17), fill=(201, 166, 70))
+f = ImageFont.truetype(f'{REF}/fontes/Montserrat.ttf', 60)
+f.set_variation_by_axes([800])
+for k, (linha, cor) in enumerate([('Revise 5x mais', (16, 24, 32)), ('rápido para o', (16, 24, 32)),
+                                  ('concurso do TJSP', (179, 21, 27))]):
+    d.text((62, 150 + k * 82), linha, font=f, fill=cor)
+og.save(f'{DEST}/img/og-tjsp-v2.jpg', quality=86)
 webp(f'{REF_OAB}/02-paginas-reais/penal-principios-e-fontes.webp', 'pg-penal-principios.webp', 707)
 webp(f'{REF_OAB}/02-paginas-reais/penal-tempo-e-lugar-do-crime.webp', 'pg-penal-tempo.webp', 707)
 webp(f'{REF_OAB}/02-paginas-reais/penal-crime-impossivel.webp', 'pg-penal-crime.webp', 707)
-lg = Image.open(f'{REF}/logo-tjsp-original.png')
+lg = Image.open(f'{REF}/01-marca-tjsp/logo-tjsp-original.png')
 lg.save(f'{DEST}/img/logo-tjsp.png')
 faltando = [n for n in usados if not os.path.exists(f'{DEST}/img/{n}')]
 assert not faltando, faltando
