@@ -164,17 +164,13 @@ TEMA = '''<style id="tema-tjsp">
 .sec-escura .gold-grad{color:var(--tj-gold-l)!important;-webkit-text-fill-color:var(--tj-gold-l)!important}
 .el-kicker,.au-kicker{color:var(--tj-red)!important}
 .tira-tag,.ck-badge,.bn-tag,.el-hl-kicker{background:linear-gradient(135deg,var(--tj-gold-l),var(--tj-gold))!important;color:#2A2208!important}
-.ck-val,.ck-val small{color:var(--tj-red)!important}
+.ck-val,.ck-val small{color:var(--tj-navy)!important}
 .sm2-ck,.el-hl-check,.of-chk{color:var(--tj-red)!important}
 .ck-ok{background:var(--tj-navy)!important;color:var(--tj-gold-l)!important}
 .tm-stars svg,.tm-nota span{color:var(--tj-gold)!important}
 .tm-dot.on,.amt-dot.on{background:var(--tj-red)!important}
 .el-hero .tag{border-color:rgba(179,21,27,.25)!important;background:rgba(255,255,255,.75)!important}
-/* botões de compra: vermelho do brasão, texto branco */
-.btn-gold,.ck-cta,.tira-cta,.el-hl-btn,.el-cta,.of-cta--main,.ir-btn{background:linear-gradient(180deg,#C8191F,var(--tj-red2))!important;
- color:#fff!important;box-shadow:0 6px 22px rgba(179,21,27,.32),inset 0 -2px 0 rgba(0,0,0,.18)!important;border:1px solid rgba(227,199,102,.55)!important}
-.btn-gold:hover,.ck-cta:hover,.tira-cta:hover,.ir-btn:hover{filter:brightness(1.07)}
-.ck-sub b{color:var(--tj-red)!important}
+/* botões de compra: ficam no verde original da /3-0/ (vermelho em botão de compra gera rejeição) */
 .dp-selo--data{color:var(--tj-red)!important;background:rgba(179,21,27,.07)!important;border-color:rgba(179,21,27,.3)!important}
 .dp-selo--data span{color:var(--tj-red)!important}
 .dp-selo--data i{background:var(--tj-red)!important;color:var(--tj-red)!important}
