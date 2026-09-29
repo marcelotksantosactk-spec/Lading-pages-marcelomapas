@@ -105,11 +105,14 @@ lis = re.findall(r'<li>[\s\S]*?</li>', itens)
 assert len(lis) == 7, len(lis)
 assert 'Legislação Especial' in lis[1] and '500 questões' in lis[2]
 lis[0] = lis[0].replace('<b>16 disciplinas completas em PDF</b> — todo o edital ilustrado',
-                        '<b>Material completo em PDF</b> — o edital de Escrevente ilustrado')
+                        '<b>Material completo em PDF</b> — as 11 disciplinas do edital de Escrevente')
+# âncora igual à do anúncio do Marcelo ("De R$871 por apenas R$97"): 661 + 47 + 30 + 77 + 56 = 871
+assert lis[0].count('<s>R$ 347</s>') == 1
+lis[0] = lis[0].replace('<s>R$ 347</s>', '<s>R$ 661</s>')
 assert 'Material completo em PDF' in lis[0]
 novo_ul = '<ul class="ck-l">' + lis[0] + ''.join(lis[3:]) + '</ul>'
 rep(itens, novo_ul)
-rep('De <s>R$ 871</s> por só', 'De <s>R$ 557</s> por só')
+# a âncora da /oab-v2/ já é R$ 871, igual à do anúncio do TJSP: fica como está
 
 # ---------- checkout ----------
 rep('https://pay.kiwify.com.br/TGerrqk', CHECKOUT, s.count('https://pay.kiwify.com.br/TGerrqk'))
