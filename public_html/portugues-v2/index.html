@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Português Ilustrado: 52 páginas em mapas e quadros | Marcelo Mapas</title>
+<meta name="description" content="Português para concursos, OAB e carreiras policiais em quadros ilustrados. 52 páginas para revisar rápido. R$17, acesso imediato.">
+<link rel="icon" href="img/pg-ortografia-v2.webp">
+<meta property="og:title" content="Português Ilustrado: 52 páginas em mapas e quadros">
+<meta property="og:description" content="Regras de Português em quadros com exemplos, para revisar rápido. R$17, acesso imediato.">
+<meta property="og:image" content="https://marcelomapas.com/portugues-v2/img/foto-material-v2.webp">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/foto-material-v2.webp">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --preto:#0d0d0d; --grafite:#2d2d2d; --cinza:#5a5a5a; --cinza-claro:#6b7280;
+  --creme:#fff9e3; --off:#f9fafb; --branco:#fff;
+  --verde:#0e7a49; --verde-claro:#12a05f; --laranja:#ff910c;
+  --borda:#e7e5e0;
+  --raio:14px; --raio-sm:10px;
+  --container:600px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Montserrat,system-ui,-apple-system,sans-serif;
+  color:var(--preto); background:var(--branco);
+  line-height:1.55; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--container);margin-inline:auto;padding-inline:20px}
+section{padding-block:44px}
+section.compacta{padding-block:32px}
+
+h1,h2,h3{line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
+h1{font-size:clamp(1.55rem,6.2vw,2.3rem);font-weight:800}
+h2{font-size:clamp(1.3rem,5vw,1.75rem);font-weight:800;margin-bottom:8px}
+h3{font-size:1.02rem;font-weight:700}
+p{text-wrap:pretty}
+.destaque{color:var(--verde)}
+.sub{color:var(--cinza);font-size:1.02rem;margin-top:14px}
+.rotulo{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--verde);
+  background:#eaf6ef;border:1px solid #cfe8da;
+  padding:6px 12px;border-radius:999px;margin-bottom:16px;
+}
+
+/* ---- dobra ---- */
+.dobra{padding-top:26px;padding-bottom:8px;background:linear-gradient(180deg,#fffdf6 0%,var(--branco) 100%)}
+.amostra{
+  margin:22px 0 4px;border-radius:var(--raio);overflow:hidden;
+  border:1px solid var(--borda);
+  box-shadow:0 14px 34px -18px rgba(13,13,13,.5);
+}
+
+/* ---- sumário recolhível ---- */
+.sumario{
+  margin-top:18px;border:1px solid var(--borda);border-radius:var(--raio);
+  background:var(--branco);overflow:hidden;
+}
+.sumario>summary{
+  cursor:pointer;padding:14px 16px;font-weight:700;color:var(--grafite);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;list-style:none;
+}
+.sumario>summary::-webkit-details-marker{display:none}
+.sumario>summary::after{content:"+";font-size:1.3rem;color:var(--verde);line-height:1}
+.sumario[open]>summary::after{content:"−"}
+.sumario>summary:focus-visible{outline:2px solid var(--verde);outline-offset:-2px}
+.sumario .conteudo{padding:0 16px 16px}
+.sumario h4{
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);
+  margin:12px 0 6px;font-weight:800;
+}
+.sumario ul{margin:0;padding-left:18px;color:var(--cinza);font-size:.92rem;line-height:1.7}
+
+/* ---- oferta ---- */
+.oferta{
+  margin-top:22px;background:var(--creme);
+  border:1px solid #f0e2b8;border-radius:var(--raio);
+  padding:20px;text-align:center;
+}
+.de{color:var(--cinza-claro);font-size:.92rem}
+.de s{text-decoration-thickness:1.5px}
+.preco{
+  font-size:clamp(2.5rem,11vw,3.3rem);font-weight:900;line-height:1;
+  letter-spacing:-.04em;margin:4px 0 2px;
+}
+.preco small{font-size:.42em;font-weight:700;vertical-align:.5em;margin-right:2px}
+.parcela{color:var(--grafite);font-size:.95rem;font-weight:600}
+.cta{
+  display:block;width:100%;margin-top:16px;
+  background:var(--verde);color:var(--branco);
+  font-family:inherit;font-size:1.06rem;font-weight:800;letter-spacing:-.01em;
+  text-align:center;text-decoration:none;
+  padding:18px 20px;border:0;border-radius:var(--raio-sm);
+  box-shadow:0 10px 22px -10px rgba(14,122,73,.75);
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.cta:hover{background:var(--verde-claro);box-shadow:0 12px 26px -10px rgba(14,122,73,.9)}
+.cta:active{transform:translateY(1px) scale(.995)}
+.cta:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+.selos{
+  margin-top:12px;color:var(--cinza);font-size:.83rem;font-weight:600;
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+}
+.selos span{white-space:nowrap}
+.selos span+span:before{content:"·";margin-right:6px;color:#c9c4bb}
+
+/* ---- listas ---- */
+.itens{list-style:none;display:grid;gap:13px;margin-top:20px}
+.itens li{display:flex;gap:11px;align-items:flex-start}
+.itens .ok{
+  flex:0 0 21px;height:21px;margin-top:2px;border-radius:50%;
+  background:#eaf6ef;color:var(--verde);
+  display:grid;place-items:center;font-size:.72rem;font-weight:900;
+}
+.itens .nao{background:#fdeceb;color:#c0392b}
+.itens b{font-weight:700}
+.itens span.txt{color:var(--grafite);font-size:.97rem}
+
+/* ---- prova ---- */
+.provas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.provas img{border-radius:var(--raio-sm);border:1px solid var(--borda)}
+.provas img:first-child{grid-column:1 / -1}
+
+/* ---- autoridade ---- */
+.autor{
+  margin-top:20px;background:var(--off);border:1px solid var(--borda);
+  border-radius:var(--raio);padding:20px;
+}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;text-align:center}
+.numeros div{background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio-sm);padding:12px 6px}
+.numeros b{display:block;font-size:1.28rem;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.numeros span{font-size:.72rem;color:var(--cinza);font-weight:600;line-height:1.3;display:block;margin-top:3px}
+
+/* ---- garantia ---- */
+.garantia{
+  background:var(--creme);border:1px solid #f0e2b8;border-radius:var(--raio);
+  padding:20px;margin-top:8px;
+}
+.garantia p{color:var(--grafite);font-size:.95rem;margin-top:8px}
+
+/* ---- faq ---- */
+.faq{margin-top:16px;display:grid;gap:0}
+.faq details{border-bottom:1px solid var(--borda)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:16px 30px 16px 0;position:relative;
+  font-weight:700;font-size:.98rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{
+  content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-size:1.4rem;font-weight:400;color:var(--verde);transition:transform .2s ease;
+}
+.faq details[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+.faq p{padding:0 0 16px;color:var(--cinza);font-size:.93rem}
+
+
+/* ---- foto + páginas ---- */
+.foto{margin:20px 0 0;border-radius:var(--raio);overflow:hidden;border:1px solid var(--borda);
+  box-shadow:0 14px 34px -18px rgba(13,13,13,.5)}
+.foto img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 45%}
+.trilho{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  margin:18px -20px 0;padding:4px 20px 14px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.trilho figure{flex:0 0 72%;max-width:300px;scroll-snap-align:center}
+.trilho button{display:block;width:100%;padding:0;border:1px solid var(--borda);border-radius:var(--raio-sm);
+  overflow:hidden;background:var(--branco);cursor:zoom-in;
+  box-shadow:0 10px 24px -16px rgba(13,13,13,.5)}
+.trilho button:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+.trilho img{width:100%;height:auto}
+.trilho figcaption{margin-top:8px;font-size:.82rem;font-weight:600;color:var(--grafite);line-height:1.35}
+.dica{font-size:.82rem;color:var(--cinza);margin-top:2px}
+dialog.zoom{border:0;padding:0;background:transparent;max-width:100vw;max-height:100dvh;width:100%;height:100%;
+  margin:0;overflow:auto}
+dialog.zoom::backdrop{background:rgba(13,13,13,.88)}
+dialog.zoom .fecha{position:fixed;top:12px;right:12px;z-index:2;background:var(--branco);color:var(--preto);
+  border:0;border-radius:999px;font:700 .9rem Montserrat,sans-serif;padding:10px 16px;cursor:pointer}
+dialog.zoom img{display:block;width:min(100%,900px);height:auto;margin:56px auto 24px}
+
+/* ---- sumário em blocos ---- */
+.bloco-sum{margin-top:18px;display:grid;gap:12px}
+.bloco-sum section{padding:16px;border:1px solid var(--borda);border-radius:var(--raio-sm);background:var(--branco)}
+.bloco-sum h3{font-size:.95rem;margin-bottom:8px}
+.bloco-sum ul{list-style:none;display:grid;gap:5px;color:var(--grafite);font-size:.92rem;line-height:1.4}
+.bloco-sum li{display:flex;gap:10px}
+.bloco-sum li b{flex:0 0 26px;color:var(--cinza);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---- prova social em tira ---- */
+.provas.tres{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:20px -20px 0;padding:0 20px 12px}
+.provas.tres img{flex:0 0 78%;max-width:300px;scroll-snap-align:center}
+@media (min-width:520px){.provas.tres{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:20px 0 0;padding:0}
+.provas.tres img,.provas.tres img:first-child{max-width:none;width:100%;grid-column:auto}}
+
+/* ---- fecho ---- */
+.fecho{background:var(--preto);color:var(--branco);text-align:center}
+.fecho h2{color:var(--branco)}
+.fecho .sub{color:#b8b8b8}
+.fecho .oferta{background:#1a1a1a;border-color:#333}
+.fecho .de{color:#999}
+.fecho .preco{color:var(--branco)}
+.fecho .parcela{color:#ccc}
+.fecho .selos{color:#999}
+
+/* ---- barra fixa mobile ---- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+  border-top:1px solid var(--borda);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;
+  transform:translateY(110%);transition:transform .28s ease;
+}
+.barra.aparece{transform:translateY(0)}
+.barra .txt{flex:1;min-width:0}
+.barra .txt b{display:block;font-size:1.06rem;font-weight:900;letter-spacing:-.03em;line-height:1.1}
+.barra .txt span{font-size:.72rem;color:var(--cinza);font-weight:600}
+.barra .cta{width:auto;margin:0;padding:13px 20px;font-size:.95rem;white-space:nowrap}
+body{padding-bottom:0}
+@media (min-width:640px){ .barra{display:none} }
+
+footer{padding:28px 0 40px;text-align:center;color:var(--cinza-claro);font-size:.78rem;line-height:1.7}
+footer a{color:var(--cinza);text-decoration:underline}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. DOBRA: problema + prova + preço + CTA ============ -->
+<header class="dobra">
+  <div class="wrap">
+    <span class="rotulo">Português para concursos e OAB</span>
+    <h1>Português em 52 páginas ilustradas, para <span class="destaque">revisar rápido e lembrar na prova.</span></h1>
+    <p class="sub">Ortografia, crase, concordância, regência e redação oficial em quadros e exemplos. Chega no seu e-mail, em PDF.</p>
+
+    <div class="foto"><img src="img/foto-material-v2.webp" width="1080" height="1200"
+         alt="Mãos folheando o material de Português impresso e encadernado em espiral, sobre uma mesa de madeira" fetchpriority="high"></div>
+
+    <div class="oferta">
+      <p class="de">De <s>R$ 117</s> por apenas</p>
+      <p class="preco"><small>R$</small>17</p>
+      <p class="parcela">à vista, uma vez só</p>
+      <a class="cta" href="https://pay.kiwify.com.br/0anMFje" data-cta="dobra">Quero o Português ilustrado</a>
+      <p class="selos"><span>Acesso imediato</span><span>PDF para baixar e imprimir</span><span>Garantia de satisfação</span></p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. NEGAÇÃO DE CATEGORIA ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Esqueça as decorebas cansativas.</h2>
+    <p class="sub">Gramática em texto corrido você lê, entende e esquece. Aqui cada regra vem em quadro, com objetivo e exemplo, na mesma página.</p>
+    <ul class="itens">
+      <li><i class="ok">✓</i><span class="txt"><b>Uma regra por quadro</b>, com o exemplo ao lado, em vez de parágrafos de gramática.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Ilustrações e destaques</b> em cada página, para a regra ficar na memória visual.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Redação oficial incluída</b>: ofício, requerimento, relatório, parecer e pronomes de tratamento.</span></li>
+      <li><i class="ok">✓</i><span class="txt"><b>Questões no final</b>, para testar o que você acabou de revisar.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. PÁGINAS REAIS ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>Veja páginas do material, sem filtro</h2>
+    <p class="sub">São páginas reais do PDF. Toque para ampliar.</p>
+  </div>
+  <div class="wrap">
+    <div class="trilho" tabindex="0" aria-label="Páginas de amostra do material, deslize para os lados">
+      <figure><button type="button" data-zoom="img/pg-ortografia-grande-v2.webp" aria-label="Ampliar: Ortografia: uso do S, X e Z"><img src="img/pg-ortografia-v2.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página real do material: Ortografia: uso do S, X e Z"></button><figcaption>Ortografia: uso do S, X e Z</figcaption></figure>
+      <figure><button type="button" data-zoom="img/pg-pronomes-grande-v2.webp" aria-label="Ampliar: Pronomes de tratamento"><img src="img/pg-pronomes-v2.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página real do material: Pronomes de tratamento"></button><figcaption>Pronomes de tratamento</figcaption></figure>
+      <figure><button type="button" data-zoom="img/pg-oficio-grande-v2.webp" aria-label="Ampliar: Redação oficial: tipos de ofício"><img src="img/pg-oficio-v2.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página real do material: Redação oficial: tipos de ofício"></button><figcaption>Redação oficial: tipos de ofício</figcaption></figure>
+      <figure><button type="button" data-zoom="img/pg-requerimento-grande-v2.webp" aria-label="Ampliar: Redação oficial: o requerimento"><img src="img/pg-requerimento-v2.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página real do material: Redação oficial: o requerimento"></button><figcaption>Redação oficial: o requerimento</figcaption></figure>
+    </div>
+    <p class="dica">Deslize para ver as outras páginas.</p>
+
+    <h2 style="margin-top:34px">O que tem dentro</h2>
+    <p class="sub">O sumário do material, na ordem do PDF, com a página de cada tema.</p>
+    <div class="bloco-sum"><section><h3>Texto e redação oficial</h3><ul><li><b>04</b><span>Interpretação e compreensão de textos</span></li><li><b>04</b><span>Identificação de tipos textuais</span></li><li><b>06</b><span>Critérios de textualidade: coerência e coesão</span></li><li><b>10</b><span>Gêneros textuais da Redação Oficial</span></li><li><b>10</b><span>Estrutura interna dos gêneros</span></li><li><b>14</b><span>Princípios gerais</span></li><li><b>14</b><span>Uso dos pronomes de tratamento</span></li><li><b>35</b><span>Princípios gerais de leitura e produção de texto</span></li><li><b>36</b><span>Intertextualidade</span></li><li><b>38</b><span>Vozes discursivas: citação, paródia, alusão, paráfrase, epígrafe</span></li></ul></section><section><h3>Escrita correta</h3><ul><li><b>15</b><span>Ortografia</span></li><li><b>16</b><span>Acentuação</span></li><li><b>19</b><span>Pontuação</span></li><li><b>22</b><span>Construção textual</span></li><li><b>47</b><span>Vícios de linguagem</span></li></ul></section><section><h3>Palavras e sentido</h3><ul><li><b>22</b><span>Classe de palavras</span></li><li><b>28</b><span>Tempos e modos verbais</span></li><li><b>29</b><span>Semântica</span></li><li><b>32</b><span>Sinônimo x antônimo</span></li><li><b>33</b><span>Sentido próprio e figurado</span></li><li><b>34</b><span>Figuras de linguagem</span></li><li><b>37</b><span>Análise morfológica</span></li><li><b>37</b><span>Sílaba tônica</span></li><li><b>37</b><span>Frases e tipos de frases</span></li></ul></section><section><h3>Sintaxe e regras de uso</h3><ul><li><b>39</b><span>Sintaxe: oração, período, termos das orações; coordenação e subordinação</span></li><li><b>41</b><span>Concordância verbal e nominal</span></li><li><b>43</b><span>Vozes verbais</span></li><li><b>44</b><span>Regência verbal e nominal</span></li><li><b>44</b><span>Colocação pronominal</span></li><li><b>45</b><span>Crase</span></li><li><b>46</b><span>Análise morfossintática</span></li></ul></section><section><h3>Para praticar</h3><ul><li><b>48</b><span>Questões</span></li></ul></section></div>
+  </div>
+</section>
+
+<!-- ============ 4. PARA QUEM É / NÃO É ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Para quem isso serve</h2>
+    <ul class="itens">
+      <li><i class="ok">✓</i><span class="txt">Quem estuda Português para <b>faculdade, OAB, concurso público ou carreira policial</b>.</span></li>
+      <li><i class="ok">✓</i><span class="txt">Quem <b>erra questão de conteúdo que já estudou</b> e precisa revisar melhor.</span></li>
+      <li><i class="ok">✓</i><span class="txt">Quem tem <b>pouco tempo</b> e não aguenta mais livro e apostila gigante.</span></li>
+      <li><i class="ok nao">✕</i><span class="txt">Não serve para quem quer <b>videoaula</b>: é material escrito e ilustrado, para estudo e revisão.</span></li>
+      <li><i class="ok nao">✕</i><span class="txt">Não é um curso para <b>aprender Português do zero</b> com explicação passo a passo.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5. PROVA SOCIAL ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <h2>O que os alunos mandam</h2>
+    <p class="sub">Mensagens recebidas no direct.</p>
+    <div class="provas tres">
+      <img src="img/aluno-a-v2.webp" width="600" height="600" loading="lazy" alt="Mensagem de aluno que comprou o curso e diz que, em Português, o material vai direto ao ponto">
+      <img src="img/aluno-b-v2.webp" width="600" height="600" loading="lazy" alt="Aluno mostra o material no tablet e diz que ficou extremamente fácil estudar, material organizado">
+      <img src="img/aluno-c-v2.webp" width="600" height="600" loading="lazy" alt="Mensagem de aluna dizendo que o custo-benefício é o melhor, com bastante conteúdo e bem ilustrado">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. AUTORIDADE (curta) ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Quem faz</h2>
+    <div class="autor">
+      <p style="color:var(--grafite);font-size:.97rem">Marcelo dos Santos, advogado. Faz material ilustrado para concurso há mais de 6 anos, publicando quase todo dia.</p>
+      <div class="numeros">
+        <div><b>6 anos</b><span>fazendo material</span></div>
+        <div><b>95 mil</b><span>alunos atendidos</span></div>
+        <div><b>52</b><span>páginas no Português</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. GARANTIA ============ -->
+<section class="compacta" style="background:var(--off)">
+  <div class="wrap">
+    <div class="garantia">
+      <h2>Garantia de satisfação</h2>
+      <p>Baixe, abra as páginas e use numa revisão de verdade. Se achar que não é para você, peça o reembolso e devolvemos o seu dinheiro. O prazo legal de arrependimento é de 7 dias (art. 49 do Código de Defesa do Consumidor).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. FAQ ============ -->
+<section class="compacta">
+  <div class="wrap">
+    <h2>Perguntas que sempre chegam</h2>
+    <div class="faq">
+      <details><summary>Como recebo o material?</summary><p>O acesso é liberado automaticamente assim que o pagamento é reconhecido. Você recebe um e-mail com o link para baixar o PDF.</p></details>
+      <details><summary>Posso imprimir?</summary><p>Sim. O PDF tem download ilimitado e está liberado para impressão durante todo o período de acesso.</p></details>
+      <details><summary>Serve para o meu concurso?</summary><p>Serve para qualquer prova que cobre Português. O conteúdo é a matéria em si, não um edital específico.</p></details>
+      <details><summary>Posso dividir com um amigo?</summary><p>Não. O material é protegido pela Lei de Direitos Autorais (Lei nº 9.610/98). A compra é individual.</p></details>
+      <details><summary>Como pago?</summary><p>Pix ou cartão, pelo checkout seguro da Kiwify. O valor é R$ 17, pagamento único.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FECHO ============ -->
+<section class="fecho">
+  <div class="wrap">
+    <h2>Português inteiro em mapas que você revisa numa tarde</h2>
+    <p class="sub">52 páginas ilustradas, direto no seu e-mail.</p>
+    <div class="oferta">
+      <p class="de">De <s>R$ 117</s> por apenas</p>
+      <p class="preco"><small>R$</small>17</p>
+      <p class="parcela">à vista, uma vez só</p>
+      <a class="cta" href="https://pay.kiwify.com.br/0anMFje" data-cta="fecho">Quero o Português ilustrado</a>
+      <p class="selos"><span>Acesso imediato</span><span>PDF para baixar e imprimir</span><span>Garantia de satisfação</span></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Marcelo Mapas &middot; MS Empreendimentos Ltda &middot; CNPJ 45.522.478/0001-10<br>
+    Este material é de apoio ao estudo e não garante aprovação em concurso.<br>
+    Pagamento processado pela Kiwify.
+  </div>
+</footer>
+
+<!-- barra fixa mobile -->
+<div class="barra" id="barra">
+  <div class="txt"><b>R$ 17</b><span>à vista &middot; garantia de satisfação</span></div>
+  <a class="cta" href="https://pay.kiwify.com.br/0anMFje" data-cta="barra">Quero agora</a>
+</div>
+
+<dialog class="zoom" id="zoom" aria-label="Página ampliada">
+  <button class="fecha" type="button" id="zoomFecha">Fechar</button>
+  <img id="zoomImg" alt="Página do material ampliada">
+</dialog>
+
+<script>
+// barra fixa aparece depois que a oferta do topo sai da tela
+(function(){
+  var oferta = document.querySelector('.dobra .oferta');
+  var barra = document.getElementById('barra');
+  if(!oferta || !barra || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(e){
+    barra.classList.toggle('aparece', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+  },{threshold:0}).observe(oferta);
+})();
+
+// Pixel da Meta (mesmo id das outras páginas)
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','591918135496369');
+fbq('track','PageView');
+
+// InitiateCheckout em qualquer clique de compra, com o lugar do botão
+document.querySelectorAll('a[data-cta]').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(window.fbq) fbq('track','InitiateCheckout',{content_name:'Português Ilustrado',value:17,currency:'BRL',posicao:a.dataset.cta});
+  });
+});
+
+// Toque na página de amostra abre a versão grande
+(function(){
+  var dlg=document.getElementById('zoom'), img=document.getElementById('zoomImg');
+  if(!dlg || !dlg.showModal) return;
+  document.querySelectorAll('[data-zoom]').forEach(function(b){
+    b.addEventListener('click',function(){
+      img.src=b.dataset.zoom; img.alt=b.getAttribute('aria-label')||'';
+      dlg.showModal();
+    });
+  });
+  document.getElementById('zoomFecha').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+</script>
+
+<!-- UTMify: mesma atribuição das outras páginas -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subid async defer></script>
+</body>
+</html>
