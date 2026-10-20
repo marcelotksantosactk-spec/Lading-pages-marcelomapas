@@ -6,7 +6,11 @@ para o script quebrar em vez de gerar página errada se a /oab-v2/ mudar.
 Fontes do conteúdo:
 - Produto na Kiwify: "TJSP - Tribunal de Justica de Sao Paulo", R$ 97, checkout zRttdvv.
 - Estrutura da prova: edital 2025 de Escrevente Técnico Judiciário (Vunesp), segundo
-  Gran Cursos e Estratégia (consultados em 28/09/2026). Novo edital: em estudo.
+  Gran Cursos e Estratégia (consultados em 28/09/2026).
+- Pós-edital (20/10/2026): Edital nº 02/2026 de Escrevente (Vunesp), DEJESP edição 4542 de 19/10/2026,
+  texto em ~/clientes/marcelo-mapas/tjsp-criativos/fontes/. 2ª a 10ª RAJ (Capital fora), prova objetiva
+  prevista para 14/03/2027, 70 questões (16 / 30 / 24), blocos I e II eliminam abaixo de 50%.
+  Aprovado pelo André; o Marcelo confirmou que o material cobre o edital novo.
 - Fotos: Wikimedia Commons, CC BY-SA 4.0 (crédito no rodapé). Logo: site do TJSP.
 """
 import os, re, shutil
@@ -123,6 +127,104 @@ rep('Material didático de apoio aos estudos, sem vínculo com bancas organizado
     'Fotos do Palácio da Justiça (Wikimedia Commons): Catherine Gaspar e Rodrigo Tetsuo Argenton, CC BY-SA 4.0; '
     'Dornicke, CC BY 3.0. Ícones: Tabler Icons (MIT).')
 
+# ---------- pós-edital: Edital nº 02/2026 (ver docstring) ----------
+# faixa no topo: some sozinha a partir do dia da prova (o contador roda no navegador, fuso de Brasília)
+FAIXA_EDITAL = (
+    '<div id="pv-faixa" class="pv-faixa" hidden>Edital nº 02/2026 publicado&nbsp;· '
+    'prova prevista para 14/03/2027&nbsp;· <span id="pv-falta"></span></div>'
+    '<script>(function(){try{var v={};new Intl.DateTimeFormat("en-CA",{timeZone:"America/Sao_Paulo",'
+    'year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date()).forEach(function(x){v[x.type]=x.value});'
+    'var d=Math.round((Date.UTC(2027,2,14)-Date.UTC(+v.year,v.month-1,+v.day))/864e5);if(d<1)return;'
+    'document.getElementById("pv-falta").innerHTML=d===1?"falta <b>1</b> dia":"faltam <b>"+d+"</b> dias";'
+    'document.getElementById("pv-faixa").hidden=false}catch(e){}})();</script>')
+rep('<main><section class="relative flex items-start sm:items-center pt-30',
+    '<main>' + FAIXA_EDITAL + '<section class="relative flex items-start sm:items-center pt-30')
+
+rep('Atualizado em <span data-current-date="true" data-locale="pt-BR" data-timezone="America/Sao_Paulo" '
+    'data-format="month-year">agosto de 2026</span>', 'Conferido com o Edital nº&nbsp;02/2026')
+
+# bloco "Como a prova é cobrada": cada bloco ligado às disciplinas que o sumário já lista (c1, c2)
+assert c2[0] == 'Língua Portuguesa'
+
+
+def linha_bloco(n, num, titulo, disc, elimina):
+    tag = ('<span class="pv-tag pv-tag--el">Elimina abaixo de 50%</span>' if elimina
+           else '<span class="pv-tag">Só classifica</span>')
+    sub = f'<span class="pv-disc">{"&nbsp;· ".join(disc)}</span>' if disc else ''
+    return (f'<li class="pv-row"><span class="pv-num">{num}<small>questões</small></span>'
+            f'<span class="pv-txt"><span class="pv-bl">Bloco {n}</span><b>{titulo}</b>{sub}{tag}</span></li>')
+
+
+BLOCO_PROVA = (
+    '<section id="como-cai" class="pv-sec"><div class="pv-card fade-in">'
+    '<span class="el-hl-kicker">Edital nº&nbsp;02/2026</span><h2>Como a prova é cobrada</h2>'
+    '<div class="pv-barra" role="img" aria-label="70 questões: 16 de Português, 30 de Direito, 24 de Conhecimentos Gerais">'
+    '<span style="flex:16">16</span><span style="flex:30">30</span><span class="pv-b3" style="flex:24">24</span></div>'
+    '<ul class="pv-rows">'
+    + linha_bloco('I', 16, 'Língua Portuguesa', [], True)
+    + linha_bloco('II', 30, 'Conhecimentos em Direito', c1, True)
+    + linha_bloco('III', 24, 'Conhecimentos Gerais', c2[1:], False)
+    + '</ul><p class="pv-alerta"><b>Português e Direito eliminam:</b> 46 das 70 questões exigem 50% de acerto em cada bloco.</p>'
+    '<p class="pv-fonte">Prova objetiva prevista para 14/03/2027, segundo o Edital nº&nbsp;02/2026 (Vunesp).</p>'
+    '</div></section>\n')
+rep('<section id="depoimentos" class="tm-sec">', BLOCO_PROVA + '<section id="depoimentos" class="tm-sec">')
+
+# FAQ: duas perguntas novas no topo, no mesmo molde das que já existem
+faq_i = s.index('<div class="bg-[var(--card)] border border-[var(--border)] rounded-xl overflow-hidden card-glow hover:border-gold"><details class="faqfix-details">')
+faq_j = s.index('</details></div>', faq_i) + len('</details></div>')
+faq_tpl = s[faq_i:faq_j]
+assert 'Como terei acesso ao material?' in faq_tpl
+faq_p = re.search(r'<span class="transition-colors duration-300 ">[^<]*</span>', faq_tpl).group(0)
+faq_r = re.search(r'(<div class="px-6 pb-5[^"]*">)[^<]*(</div>)', faq_tpl)
+
+
+def faq(pergunta, resposta):
+    return (faq_tpl.replace(faq_p, f'<span class="transition-colors duration-300 ">{pergunta}</span>')
+            .replace(faq_r.group(0), faq_r.group(1) + resposta + faq_r.group(2)))
+
+
+# "Serve para Oficial de Justiça?" fica de fora de propósito: não há resposta confirmada.
+s = s[:faq_i] + faq('Serve para o edital novo (nº&nbsp;02/2026)?',
+                    'Sim. O conteúdo de Direito do Edital nº&nbsp;02/2026 é o mesmo do edital anterior de Escrevente, '
+                    'e o material segue o conteúdo programático do edital.') \
+    + faq('É para a Capital?',
+          'Este edital é para o interior e o litoral, nas circunscrições da 2ª à 10ª Região Administrativa '
+          'Judiciária (RAJ). A Capital não está neste concurso.') + s[faq_i:]
+
+EDITAL_CSS = '''<style id="tjsp-edital">
+.pv-faixa{position:relative;z-index:30;background:var(--tj-navy);color:#F7F0E2;text-align:center;
+ font-size:.78rem;font-weight:600;line-height:1.45;letter-spacing:.01em;padding:10px 18px;text-wrap:balance}
+.pv-faixa[hidden]{display:none!important}
+.pv-faixa b{color:var(--tj-gold-l);font-weight:800;font-variant-numeric:tabular-nums}
+.pv-sec{background-color:var(--tj-creme);background-image:url(img/padrao-claro.svg);background-size:440px 440px;padding:8px 20px 72px}
+.pv-card{max-width:820px;margin:0 auto;background:#fff;border-radius:22px;padding:36px 22px 30px;
+ box-shadow:0 18px 50px rgba(16,24,32,.08);border:1px solid rgba(16,24,32,.07)}
+.pv-card h2{font-family:"Oswald","Montserrat",sans-serif;text-transform:uppercase;font-weight:700;
+ font-size:1.55rem;line-height:1.2;text-align:center;color:var(--tj-navy);margin:0;text-wrap:balance}
+.pv-barra{display:flex;gap:3px;height:34px;margin:24px 0 6px;border-radius:8px;overflow:hidden}
+.pv-barra span{display:flex;align-items:center;justify-content:center;background:var(--tj-navy);color:#F7F0E2;
+ font-weight:800;font-size:.85rem;font-variant-numeric:tabular-nums}
+.pv-barra .pv-b3{background:#E9DFC6;color:var(--tj-navy)}
+.pv-rows{list-style:none;margin:6px 0 0;padding:0}
+.pv-row{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:start;padding:16px 0;border-top:1px solid rgba(16,24,32,.09)}
+.pv-row:first-child{border-top:0}
+.pv-num{font-weight:900;font-size:2.1rem;line-height:1;color:var(--tj-navy);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pv-num small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B6A60;margin-top:5px}
+.pv-txt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.pv-bl{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--tj-red)}
+.pv-txt b{font-size:1rem;color:#141414;line-height:1.3}
+.pv-disc{font-size:.84rem;line-height:1.55;color:#55544C}
+.pv-tag{margin-top:6px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+ padding:5px 9px;border-radius:6px;background:#EFEADC;color:#55544C}
+.pv-tag--el{background:rgba(179,21,27,.08);color:var(--tj-red)}
+.pv-alerta{margin:14px 0 0;padding:14px 16px;border-left:4px solid var(--tj-red);background:rgba(179,21,27,.05);
+ border-radius:0 10px 10px 0;font-size:.95rem;line-height:1.55;color:#141414;text-wrap:pretty}
+.pv-alerta b{color:var(--tj-red)}
+.pv-fonte{margin:14px 0 0;font-size:.76rem;line-height:1.5;color:#6B6A60;text-align:center}
+</style>'''
+MEDIA_EDITAL = ('<style>@media(min-width:640px){#tj .pv-faixa{font-size:.85rem}#tj .pv-card{padding:50px 56px 40px}'
+                '#tj .pv-card h2{font-size:2.15rem}#tj .pv-row{grid-template-columns:96px 1fr}#tj .pv-num{font-size:2.6rem}}</style>')
+
 # ---------- tema visual TJSP ----------
 # Cores do brasão (referencias-tjsp/01-marca-tjsp/PALETA.md) e o jeito decorativo dos criativos da
 # Gaby no Tribunal: ícones de tribunal em traço fino no fundo, faixa da bandeira de SP, fotos do
@@ -196,11 +298,14 @@ def prefixa(css, pre='#tj '):
 
 
 rep('<body', '<body id="tj"')
-rep('</body>', prefixa(TEMA) + '</body>')
+rep('</body>', prefixa(TEMA) + prefixa(EDITAL_CSS) + MEDIA_EDITAL + '</body>')
 
 visivel = re.sub(r'<(script|style)[\s\S]*?</\1>', '', s).replace('quem estuda para a OAB, para concursos', '')
 for resto in ('OAB', 'oab-v2', '1ª fase', '16 disciplinas', 'TGerrqk'):
     assert resto not in visivel, resto
+# proibido no pós-edital (só cadastro de reserva, salário não é R$ 9 mil, sem escassez falsa)
+for proibido in ('vaga', 'nomeaç', 'nomeac', '9 mil', '9.000', 'Oficial de Justiça', 'Atualizado em'):
+    assert proibido.lower() not in visivel.lower(), proibido
 
 # ---------- arquivos ----------
 os.makedirs(f'{DEST}/img', exist_ok=True)
