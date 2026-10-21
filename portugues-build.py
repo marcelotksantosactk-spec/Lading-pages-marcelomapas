@@ -22,6 +22,8 @@ import subprocess
 
 from PIL import Image
 
+import rastreamento  # rastreamento da TAOS + reserva da UTMify (rastreamento.py)
+
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 BASE = f'{RAIZ}/public_html/penal-v2'
 ANTIGA = f'{RAIZ}/public_html/Portugues02'
@@ -405,7 +407,7 @@ HEAD = f'''<!DOCTYPE html>
 <body>
 '''
 
-out = HEAD + BODY + '</body>\n</html>\n'
+out = rastreamento.instalar(HEAD + BODY + '</body>\n</html>\n')
 assert out.count("fbq('init'") == 1 and out.count("fbq('track','PageView')") == 1
 assert out.count('cdn.utmify.com.br') == 1
 assert out.count(CHECKOUT) == 3, out.count(CHECKOUT)

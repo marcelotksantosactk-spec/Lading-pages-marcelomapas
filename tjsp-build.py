@@ -16,6 +16,8 @@ Fontes do conteúdo:
 import os, re, shutil
 from PIL import Image
 
+import rastreamento  # rastreamento da TAOS + reserva da UTMify (rastreamento.py)
+
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 BASE = f'{RAIZ}/public_html/oab-v2'
 DEST = f'{RAIZ}/public_html/tjsp'
@@ -309,6 +311,7 @@ for proibido in ('vaga', 'nomeaç', 'nomeac', '9 mil', '9.000', 'Oficial de Just
 
 # ---------- arquivos ----------
 os.makedirs(f'{DEST}/img', exist_ok=True)
+s = rastreamento.instalar(s)  # a /oab-v2/ já traz os dois; aqui só confere
 open(f'{DEST}/index.html', 'w', encoding='utf-8').write(s)
 shutil.copy(f'{BASE}/.htaccess', f'{DEST}/.htaccess')
 usados = set(re.findall(r'src="img/([^"]+)"', s))

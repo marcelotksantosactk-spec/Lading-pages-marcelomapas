@@ -93,3 +93,20 @@ Feito em 22/09/2026, dentro do próprio servidor, em `~/backup-taos-20260922` (1
 VSLs e os dois `biologia.tar.gz`. Se algum dia algo apagar esses arquivos do `public_html`,
 restaurar é uma cópia local no servidor, questão de segundos — não precisa reenviar 1,2 GB pela
 internet.
+
+## Rastreamento nas páginas da TAOS
+
+As páginas de venda feitas pela TAOS (`CT1`, `tjsp/`, `oab-v2/`, `portugues-v2/`, `penal-v2/`) levam dois scripts,
+definidos em `rastreamento.py` e postos pelos geradores (`tjsp-build.py`, `oab-v2-build.py`, `portugues-build.py`)
+com `rastreamento.instalar(html)`:
+
+- **Rastreamento próprio da TAOS** logo depois do `<meta charset>`: `public_html/t.js` (cópia de
+  `~/dashtaos/tracking/dist/t.js`, modo direto). Grava `page_view`, `checkout` e `page_exit` no banco do dash e põe
+  `sck=tv1.<vid>.<utm>` (e `s1` = utm_id) no link da Kiwify. Não carrega pixel e não manda compra. Trocou o `t.js`?
+  Mude `VERSAO_T_JS` em `rastreamento.py` (a Cloudflare guarda arquivo estático).
+- **Reserva da UTMify** logo depois da tag da UTMify: no clique, acrescenta ao link da Kiwify os parâmetros da página
+  que faltam, sem sobrescrever.
+
+No clique, as duas convivem: a reserva não sobrescreve parâmetro que já existe e o rastreamento sempre grava o `sck`
+dele (a UTMify está com `data-utmify-prevent-xcod-sck`, então não usa o `sck`). Página nova da TAOS: chame
+`instalar()` no gerador.

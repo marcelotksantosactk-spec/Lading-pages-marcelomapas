@@ -1,4 +1,5 @@
 import re, shutil, os
+import rastreamento  # rastreamento da TAOS + reserva da UTMify (rastreamento.py)
 S='/private/tmp/claude-501/-Users-andreoliveira-OS-da-Empresa/ef53a476-0984-4e60-80f3-da92714f7904/scratchpad'
 DEST='/Users/andreoliveira/marcelomapas-site/public_html/oab-v2'
 s=open(f'{S}/base30.html',encoding='utf-8').read()
@@ -94,6 +95,7 @@ rep('https://pay.kiwify.com.br/Jjp3tM5','https://pay.kiwify.com.br/TGerrqk')
 s,k=re.subn(r'<p class="of-urgencia"[\s\S]*?</p>\s*(?=</section>)','',s); assert k==1,k
 
 assert 'olic' not in s[s.index('<body'):].replace('Política','').replace('políticas','') or True
+s=rastreamento.instalar(s)
 open(f'{S}/oab-v2-index.html','w',encoding='utf-8').write(s)
 
 # ---------- imagens ----------
