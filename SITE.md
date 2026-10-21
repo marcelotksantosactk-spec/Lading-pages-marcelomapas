@@ -110,3 +110,7 @@ com `rastreamento.instalar(html)`:
 No clique, as duas convivem: a reserva não sobrescreve parâmetro que já existe e o rastreamento sempre grava o `sck`
 dele (a UTMify está com `data-utmify-prevent-xcod-sck`, então não usa o `sck`). Página nova da TAOS: chame
 `instalar()` no gerador.
+
+`public_html/taos-wp.js` leva os mesmos dois scripts para o WordPress do Marcelo (resumosmapasdireito.com), que carrega
+numa linha só: `<script async src="https://marcelomapas.com/taos-wp.js?v=1"></script>`. Mudou o arquivo, o Marcelo precisa
+trocar o `?v=` no WordPress (instrução em `~/clientes/marcelo-mapas/rastreamento-wordpress-para-o-marcelo.md`).
