@@ -53,6 +53,8 @@ src="https://www.facebook.com/tr?id=591918135496369&ev=PageView&noscript=1"
   async
   defer
 ></script>
+<!-- Reserva da UTMify: no clique, repassa os parâmetros da página (utm_*, sck, src, fbclid) ao checkout se a UTMify ainda não tiver carregado. Só acrescenta o que o link não tem. -->
+<script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="pay.kiwify.com.br"]');if(!a)return;try{var u=new URL(a.href),q=new URLSearchParams(location.search);q.forEach(function(v,k){if(!u.searchParams.has(k))u.searchParams.set(k,v)});a.href=u.toString()}catch(err){}},true);</script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"><style id="bw-theme">
 /* ===== TEMA PRETO E BRANCO ===== */
 :root{--bg:#000;--bg2:#080808;--bg3:#111;--card:#0d0d0d;--border:#ffffff1f;--text:#fff;--muted:#a9a9a9;
