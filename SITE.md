@@ -96,8 +96,8 @@ internet.
 
 ## Rastreamento nas páginas da TAOS
 
-As páginas de venda feitas pela TAOS (`CT1`, `tjsp/`, `oab-v2/`, `portugues-v2/`, `penal-v2/`) levam dois scripts,
-definidos em `rastreamento.py` e postos pelos geradores (`tjsp-build.py`, `oab-v2-build.py`, `portugues-build.py`)
+As páginas de venda feitas pela TAOS (`CT1`, `tjsp/`, `oab-v2/`, `portugues-v2/`, `penal-v2/`, `constitucional-v2/`) levam dois scripts,
+definidos em `rastreamento.py` e postos pelos geradores (`tjsp-build.py`, `oab-v2-build.py`, `portugues-build.py`, `constitucional-build.py`)
 com `rastreamento.instalar(html)`:
 
 - **Rastreamento próprio da TAOS** logo depois do `<meta charset>`: `public_html/t.js` (cópia de
@@ -114,3 +114,9 @@ dele (a UTMify está com `data-utmify-prevent-xcod-sck`, então não usa o `sck`
 `public_html/taos-wp.js` leva os mesmos dois scripts para o WordPress do Marcelo (resumosmapasdireito.com), que carrega
 numa linha só: `<script async src="https://marcelomapas.com/taos-wp.js?v=1"></script>`. Mudou o arquivo, o Marcelo precisa
 trocar o `?v=` no WordPress (instrução em `~/clientes/marcelo-mapas/rastreamento-wordpress-para-o-marcelo.md`).
+
+## /constitucional-v2/ (teste de 21/10/2026)
+
+Gerada por `constitucional-build.py` a partir da `/penal-v2/` (código, CSS, pixel), na ordem dos blocos da página de Penal
+do Marcelo no WordPress (que leva 36% das visitas ao checkout, contra 22% da `/CT1`), com todo o conteúdo de Constitucional
+tirado da `/CT1`. Sem data de "só hoje". Checkout `Gi2NvFT`. Gere de novo com `python3 constitucional-build.py`.
