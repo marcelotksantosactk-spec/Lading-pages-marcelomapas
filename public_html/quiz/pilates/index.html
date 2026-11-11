@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Desafio 21 Dias de Pilates em Casa</title>
+<meta name="description" content="Descubra seu plano personalizado de pilates na parede em 2 minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+/* ================== CONFIGURAÇÃO (troque aqui) ================== */
+window.QUIZ_CONFIG = {
+  PRODUCT_NAME: "Pilates em Casa 21 Dias",          // nome do produto
+  CHECKOUT_URL: "https://pay.kiwify.com.br/SEU-LINK", // link do checkout Kiwify
+  PIXEL_ID: "SEU_PIXEL_ID",                           // ID do pixel Meta (só números)
+  PRICE_FROM: "R$ 97,00",                             // preço "de"
+  PRICE_TO: "R$ 27,90",                               // preço "por"
+  MEMBERS: "+50 mil"                                  // número para prova social
+};
+/* ================================================================ */
+</script>
+<script>
+(function(){var id=QUIZ_CONFIG.PIXEL_ID;if(!/^\d{6,}$/.test(id))return;
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init',id);fbq('track','PageView');})();
+</script>
+<style>
+:root{--bg:#f4f3f8;--card:#fff;--ink:#1f1d3a;--muted:#6b6886;--line:#e6e3f0;--brand:#8b6cf6;--brand2:#b06cf0;--brandSoft:#ece7ff;--ok:#2fb67c;--warn:#f2a33a;--bad:#e5566b;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif}
+body{min-height:100dvh}
+.app{max-width:460px;margin:0 auto;padding:12px 16px 110px;min-height:100dvh;position:relative}
+.top{display:flex;align-items:center;gap:12px;height:44px}
+.back{width:32px;height:32px;border-radius:10px;border:0;background:#e9e7f1;color:var(--ink);font-size:18px;cursor:pointer;flex:none}
+.back[hidden]{visibility:hidden;display:block}
+.toptitle{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.prog{height:4px;background:#e2dff0;border-radius:4px;overflow:hidden;margin:6px 0 18px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;transition:width .35s}
+.screen{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:24px;line-height:1.25;font-weight:800;text-align:center;text-transform:uppercase}
+h2{font-size:21px;line-height:1.3;font-weight:800;margin-bottom:6px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+.center{text-align:center}
+.lead{font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:8px 0 22px}
+.lead b{font-weight:800}
+.ages{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.age{border:0;background:none;cursor:pointer;text-align:left}
+.age .ph{aspect-ratio:1/1;border-radius:90px 90px 0 0;background:linear-gradient(180deg,#e7e3ff,#d9d2ff);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;font-size:72px}
+.age .ph img{width:100%;height:100%;object-fit:cover}
+.age .lb{background:linear-gradient(90deg,var(--brand2),var(--brand));color:#fff;font-weight:700;font-size:13px;padding:9px 10px;border-radius:0 0 12px 12px;display:flex;justify-content:space-between;align-items:center}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;background:var(--card);border:2px solid transparent;border-radius:var(--radius);padding:16px 14px;font:600 14px Montserrat,sans-serif;color:var(--ink);cursor:pointer;text-align:left;box-shadow:0 1px 2px rgba(30,20,80,.05);transition:.15s}
+.opt .em{font-size:20px;width:26px;text-align:center;flex:none}
+.opt .tx{flex:1}
+.opt .ck{width:20px;height:20px;border-radius:6px;border:2px solid #cfcadf;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.opt.sel{border-color:var(--brand);background:var(--brandSoft)}
+.opt.sel .ck{background:var(--brand);border-color:var(--brand)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gcard{background:var(--card);border:2px solid transparent;border-radius:var(--radius);padding:18px 10px;cursor:pointer;font:700 14px Montserrat,sans-serif;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:8px}
+.gcard .em{font-size:40px}
+.gcard.sel{border-color:var(--brand);background:var(--brandSoft)}
+.tip{margin-top:14px;background:#efeaff;border-radius:var(--radius);padding:14px;font-size:13px;line-height:1.5}
+.tip b{display:block;margin-bottom:4px}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(244,243,248,0),var(--bg) 35%)}
+.foot .in{max-width:428px;margin:0 auto}
+.btn{width:100%;border:0;border-radius:var(--radius);padding:17px;font:700 15px Montserrat,sans-serif;color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand2));cursor:pointer;box-shadow:0 8px 20px rgba(139,108,246,.3)}
+.btn:disabled{background:#dcd9e8;color:#a5a2b8;box-shadow:none;cursor:default}
+.info{text-align:center;padding-top:18px}
+.info .big{font-size:64px;margin-bottom:14px}
+.info h2{margin-bottom:12px}
+.info p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:12px}
+.stmt{background:var(--card);border-radius:var(--radius);padding:30px 18px;text-align:center;font-size:18px;font-weight:700;line-height:1.4;margin:20px 0}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.yn button{background:var(--card);border:0;border-radius:var(--radius);padding:18px;font:700 15px Montserrat,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.yn .i{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.inp{display:flex;align-items:baseline;border-bottom:2px solid var(--line);margin:22px 0 14px;padding-bottom:6px}
+.inp input{flex:1;border:0;background:none;font:800 34px Montserrat,sans-serif;color:var(--ink);outline:none;width:100%}
+.inp span{font-weight:700;font-size:13px}
+.err{color:var(--bad);font-size:12px;min-height:16px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;cursor:pointer;margin-top:10px}
+.consent input{margin-top:2px;width:18px;height:18px;accent-color:var(--brand);flex:none}
+.loader{text-align:center;padding-top:40px}
+.ring{width:150px;height:150px;margin:0 auto 22px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800}
+.loader p{color:var(--muted);font-size:14px;line-height:1.6;max-width:320px;margin:10px auto 0}
+.panel{background:var(--card);border-radius:18px;padding:18px;margin-top:12px}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;text-align:center;margin-bottom:6px}
+.bmi-bar{position:relative;height:10px;border-radius:10px;background:linear-gradient(90deg,#5fb4f5 0 14%,#2fb67c 14% 40%,#f2a33a 40% 60%,#e5566b 60%);margin:46px 0 8px}
+.bmi-pin{position:absolute;top:-38px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:4px 8px;border-radius:8px;white-space:nowrap}
+.bmi-pin:after{content:"";position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.bmi-lbl{display:flex;justify-content:space-between;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase}
+.badge{margin-top:16px;border-radius:12px;padding:12px;font-size:13px;line-height:1.5}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.fact{background:var(--bg);border-radius:12px;padding:12px}
+.fact small{display:block;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.fact b{font-size:14px}
+.bars .row{margin:12px 0}
+.bars .row div{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px}
+.bars .track{height:10px;border-radius:10px;background:#eee}
+.bars .fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;transition:width 1s}
+.swipe{background:var(--card);border-radius:18px;padding:30px 18px;text-align:center;margin:18px 0}
+.swipe .em{font-size:80px}
+.swipe h3{font-size:20px;margin-top:10px}
+.swipe-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.swipe-btns button{background:var(--card);border:0;border-radius:var(--radius);padding:14px 6px;font:700 12px Montserrat,sans-serif;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:6px}
+.swipe-btns span{font-size:24px}
+.chart{margin:14px 0 4px}
+.chart svg{width:100%;height:auto}
+.test{background:var(--card);border-radius:16px;padding:16px;margin:18px 0;text-align:left;font-size:13px;line-height:1.55}
+.stars{color:#f5b301;letter-spacing:2px}
+.email{width:100%;border:2px solid var(--line);border-radius:var(--radius);padding:16px;font:600 16px Montserrat,sans-serif;margin:16px 0 6px;outline:none;background:#fff;color:var(--ink)}
+.email:focus{border-color:var(--brand)}
+.legal{font-size:11px;color:var(--muted);line-height:1.5;margin-top:14px;text-align:center}
+.offer h2{text-align:center}
+.price{text-align:center;margin:14px 0}
+.price s{color:var(--muted);font-size:14px}
+.price b{display:block;font-size:34px;color:var(--brand)}
+.list{list-style:none;margin:10px 0}
+.list li{padding:8px 0 8px 28px;position:relative;font-size:14px;line-height:1.4}
+.list li:before{content:"✓";position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--ok);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.guarantee{display:flex;gap:12px;align-items:center;background:#e9f8f1;border-radius:14px;padding:14px;font-size:13px;line-height:1.5;margin-top:14px}
+.guarantee span{font-size:34px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><button class="back" id="back" hidden aria-label="Voltar">←</button><div class="toptitle" id="toptitle"></div><div style="width:32px"></div></div>
+  <div class="prog" id="progwrap"><i id="prog"></i></div>
+  <div id="view"></div>
+</div>
+<div class="foot" id="foot" hidden><div class="in"><button class="btn" id="next">Avançar</button></div></div>
+
+<script>
+const C=window.QUIZ_CONFIG;
+const S={}; // respostas
+const ageTxt=()=>({ "18-29":"na faixa dos 20 anos","30-39":"na faixa dos 30 anos","40-49":"na faixa dos 40 anos","50+":"acima dos 50 anos"}[S.age]||"da sua idade");
+const track=(ev,data)=>{try{window.fbq&&fbq('track',ev,data||{})}catch(e){}};
+
+/* ---------- DEFINIÇÃO DAS TELAS ---------- */
+const STEPS=[
+ {id:"age",type:"age",sec:""},
+ {id:"tried",type:"single",sec:"",q:"Você já fez pilates usando a parede como apoio?",o:[["Sim","👍"],["Ainda não","🙋‍♀️"]]},
+ {type:"info",em:"💪",t:"Você vai se sair muito bem!",p:["O pilates na parede é simples de aprender e funciona para qualquer nível de condicionamento.","Você vai treinar em casa, sem comprar nenhum equipamento, e sentir o corpo responder."],b:"Bora começar"},
+ // MEU PERFIL
+ {id:"goals",type:"multi",sec:"Meu perfil",q:"O que você mais quer conquistar agora?",sub:"Marque quantas quiser",o:[["Emagrecer","⚖️"],["Firmar o corpo sem mudar o peso","🏋️‍♀️"],["Corrigir a postura","🧍‍♀️"],["Diminuir o estresse","🧘‍♀️"],["Ganhar flexibilidade","🤸‍♀️"],["Ter mais disposição","⚡"],["Ainda não sei","❓"]]},
+ {id:"body",type:"grid",sec:"Meu perfil",q:"Como é o seu corpo hoje?",o:[["Magro","🧍‍♀️"],["Mediano","🙆‍♀️"],["Com uns quilinhos a mais","🤷‍♀️"],["Plus size","💁‍♀️"]]},
+ {id:"dream",type:"single",sec:"Meu perfil",q:"Qual corpo você gostaria de ter?",o:[["Mais magro","✨"],["Mais firme e definido","💪"],["Com curvas marcadas","🍑"],["Só alguns centímetros a menos","📏"]],tip:["🤙 A gente te leva até lá","Com o pilates na parede você ganha força, leveza e confiança no próprio corpo."]},
+ {id:"zones",type:"multi",sec:"Meu perfil",q:"Quais partes do corpo você quer trabalhar mais?",sub:"Marque quantas quiser",o:[["Abdômen","🔥"],["Bumbum","🍑"],["Pernas","🦵"],["Braços","💪"],["Corpo inteiro","🧍‍♀️"]]},
+ {id:"weightHist",type:"single",sec:"Meu perfil",q:"Como o seu peso costuma se comportar?",o:[["Engordo fácil e emagreço com dificuldade","📈"],["Engordo e emagreço com facilidade","🔄"],["Tenho dificuldade para ganhar peso ou músculo","📉"]]},
+ {id:"best",type:"single",sec:"Meu perfil",q:"Quando você esteve no seu melhor momento físico?",o:[["Menos de 1 ano atrás","🗓️"],["De 1 a 2 anos atrás","⏳"],["Mais de 3 anos atrás","🕰️"],["Nunca estive","🤔"]],tip:["🤙 Dá para voltar e ir além","O pilates na parede é um recomeço leve para você se sentir bem de novo."]},
+ {id:"day",type:"single",sec:"Meu perfil",q:"Como é a sua rotina na maior parte dos dias?",o:[["Fico sentada quase o dia inteiro","🪑"],["Me movimento de vez em quando","🚶‍♀️"],["Passo o dia de pé","🧍‍♀️"]]},
+ {id:"acts",type:"multi",sec:"Meu perfil",q:"Alguma dessas atividades faz parte do seu dia?",sub:"Marque quantas quiser",o:[["Subir escadas com frequência","🪜"],["Brincar ou sair com os filhos","👧"],["Cuidar da casa","🧹"],["Nenhuma delas","❌"]]},
+ {id:"walk",type:"single",sec:"Meu perfil",q:"Com que frequência você caminha?",o:[["Quase todo dia","🚶‍♀️"],["3 a 4 vezes por semana","👟"],["1 a 2 vezes por semana","🙂"],["Uma vez por mês ou menos","😅"]]},
+ {id:"flex",type:"single",sec:"Meu perfil",q:"Sentada com as pernas esticadas, você alcança a ponta dos pés?",sub:"Como está sua flexibilidade?",o:[["Fico bem longe","🙅‍♀️"],["Quase chego lá","🤏"],["Alcanço sem esforço","🤸‍♀️"]]},
+ {type:"info",em:"🤗",t:"Estamos com você!",p:["Você vai começar com movimentos suaves, pensados para iniciantes, que soltam o corpo com segurança e aumentam a mobilidade semana a semana.","Nunca é tarde para se sentir bem na própria pele."],b:"Entendi"},
+ {id:"st1",type:"yesno",sec:"Meu perfil",s:"Fico ofegante só de subir um lance de escada."},
+ {id:"st2",type:"yesno",sec:"Meu perfil",s:"Quando o treino fica difícil ou chato, eu largo no meio do caminho."},
+ {id:"st3",type:"yesno",sec:"Meu perfil",s:"Começo cheia de vontade, mas perco o ritmo depois de poucos dias."},
+ {type:"good"},
+ {id:"height",type:"input",sec:"Meu perfil",q:"Qual é a sua altura?",unit:"cm",min:120,max:220,consent:true},
+ {id:"weight",type:"input",sec:"Meu perfil",q:"Quanto você pesa hoje?",unit:"kg",min:35,max:250},
+ {id:"target",type:"input",sec:"Meu perfil",q:"Perfeito! E quanto você gostaria de pesar?",sub:"Não precisa ser exato, dá para ajustar depois.",unit:"kg",min:35,max:250},
+ {type:"loading",t:"Analisando seus dados...",p:"Comparando seu perfil com o de milhares de alunas.",ms:3200},
+ {type:"bmi"},
+ {type:"info",em:"🎯",t:"Meta sem plano é só um sonho",p:[()=>"Mulheres "+ageTxt()+" têm necessidades próprias de saúde e exercício.","Vamos entender melhor o que faz você ser única para montar um pilates na parede sob medida."],b:"Vamos lá"},
+ // MEU PLANO
+ {id:"intensity",type:"single",sec:"Meu plano",q:"Que intensidade de treino você prefere?",o:[["Leve e tranquila","🌿"],["Quero suar um pouco","💦"],["Pode pegar pesado","🔥"]],tip:["✅ Seu programa vai se ajustar ao que você precisa",""]},
+ {id:"freq",type:"single",sec:"Meu plano",q:"Quantos dias por semana você treina hoje?",o:[["1 a 2 dias","1️⃣"],["2 a 4 dias","3️⃣"],["5 dias ou mais","5️⃣"]]},
+ {id:"time",type:"single",sec:"Meu plano",q:"Quanto tempo por dia você consegue reservar para treinar?",o:[["10 a 15 minutos","⏱️"],["15 a 25 minutos","⏰"],["Mais de 25 minutos","🕐"],["Não sei ainda","🤔"]]},
+ {type:"info",em:"😌",t:"Ninguém precisa se matar de treinar!",p:["Treinos curtos e constantes trazem resultado.","O programa se adapta ao seu nível de conforto e te leva à meta sem exagero."],b:"Entendi"},
+ {id:"pain",type:"multi",sec:"Meu plano",q:"Alguma dessas questões te incomoda?",sub:"Seu programa vai levar isso em conta para você treinar com conforto e segurança.",o:[["Coluna sensível","🦴"],["Dor no joelho","🦵"],["Quadril travado","🧍‍♀️"],["Nenhuma","✅"]],none:"Nenhuma"},
+ {type:"info",when:()=>!(S.pain||[]).includes("Nenhuma"),em:"🛡️",t:"Pode ficar tranquila!",p:[()=>{const p=S.pain||[];if(p.includes("Dor no joelho"))return"Você vai ter vários exercícios leves que fortalecem os joelhos, para caminhar mais, sentir menos dor e ter mais segurança no dia a dia.";if(p.includes("Coluna sensível"))return"Você vai ter exercícios que fortalecem o core e protegem a coluna, para se movimentar sem medo e com menos dor.";return"Você vai ter exercícios que soltam o quadril aos poucos, devolvendo mobilidade e conforto no dia a dia.";}],b:"Entendi"},
+ {id:"cellulite",type:"single",sec:"Meu plano",q:"A celulite te incomoda?",o:[["Sim","😣"],["Não","😊"],["Um pouco","🤏"]]},
+ {id:"place",type:"single",sec:"Meu plano",q:"Onde você prefere treinar?",o:[["Em casa","🏠"],["Ao ar livre","🌳"],["Na academia","🏋️‍♀️"],["Tanto faz","🌍"]]},
+ {type:"info",em:"📍",t:"Emagreça onde e quando quiser",p:["O lugar não define o resultado.","O que conta é a constância e a dedicação que você coloca em cada treino."],b:"Entendi"},
+ {id:"like1",type:"swipe",sec:"Meu plano",ex:"Alongamento",em:"🧘‍♀️"},
+ {id:"like2",type:"swipe",sec:"Meu plano",ex:"Avanço (afundo)",em:"🏃‍♀️"},
+ {id:"like3",type:"swipe",sec:"Meu plano",ex:"Agachamento na parede",em:"🧱"},
+ {id:"like4",type:"swipe",sec:"Meu plano",ex:"Agachamento livre",em:"🏋️‍♀️"},
+ {type:"loading",t:"Analisando suas respostas...",p:"Estamos adaptando o programa às suas preferências e ao seu condicionamento.",ms:3000},
+ {type:"program"},
+ // ESTILO DE VIDA
+ {id:"water",type:"single",sec:"Estilo de vida",q:"Quantos copos de água você toma por dia?",o:[["Quase só café ou chá","☕"],["Uns 2 copos","💧"],["De 2 a 6 copos","💧💧"],["Mais de 6 copos","🌊"]]},
+ {id:"energy",type:"single",sec:"Estilo de vida",q:"Como fica a sua energia ao longo do dia?",o:[["Que energia? Vivo cansada","🦥"],["Oscila: tem hora que vai, tem hora que não","🎢"],["Ótima, quase sempre a mil","⚡"]]},
+ {type:"info",em:"⚡",t:()=>S.energy==="Ótima, quase sempre a mil"?"Sua energia está ótima, vamos manter assim!":"Vamos recarregar sua energia!",p:["Os exercícios melhoram a mobilidade, o bem-estar e a força, e isso aumenta a disposição de dentro para fora.","Queremos você com energia para aproveitar a vida."],b:"Entendi"},
+ {id:"period",type:"single",sec:"Estilo de vida",q:"Treinar durante a menstruação é difícil para você?",o:[["Sim","😣"],["Não","😊"]]},
+ {type:"info",em:"🌙",t:"Seu programa acompanha a sua energia",p:["A disposição sobe e desce ao longo do mês, então o treino também precisa ser flexível.","É assim que o nosso programa funciona."],b:"Continuar"},
+ {id:"sleep",type:"single",sec:"Estilo de vida",q:"Quantas horas você dorme por noite?",o:[["Menos de 5","😵"],["Entre 5 e 6","🥱"],["Entre 7 e 8","😴"],["Mais de 8","🛌"]]},
+ {id:"sleepIssues",type:"multi",sec:"Estilo de vida",q:"Tem algo que você gostaria de melhorar no seu sono?",sub:"Marque quantas quiser",o:[["Não, durmo bem","😊"],["Demoro para pegar no sono","🌀"],["Acordo cansada","🥱"],["Acordo durante a noite","🌙"],["Meu horário de sono é bagunçado","⏰"]],none:"Não, durmo bem"},
+ {type:"info",em:"😴",t:"Dormir melhor deixa o emagrecimento mais fácil",p:["Noites mal dormidas aumentam a vontade de comer e desregulam os hormônios da fome.","O plano ajuda a acalmar a mente, melhorar o sono e manter o progresso, um passo de cada vez."],b:"Entendi"},
+ // ALIMENTAÇÃO
+ {id:"diet",type:"multi",sec:"Alimentação",q:"Você segue algum estilo de alimentação?",sub:"Marque quantas quiser",o:[["Nenhum","🍽️"],["Low carb","🥩"],["Cetogênica","🥑"],["Vegetariana","🥗"],["Vegana","🌱"],["Pescetariana","🐟"],["Sem lactose","🥛"],["Sem glúten","🌾"],["Outro","➕"]],none:"Nenhum"},
+ {id:"veg",type:"single",sec:"Alimentação",q:"Quantas porções de frutas e verduras você come por dia?",o:[["Quase nenhuma","😬"],["Uma quantidade razoável","🍎"],["Muitas, como de tudo que é verde","🥦"]]},
+ {id:"between",type:"single",sec:"Alimentação",q:"Como você se sente no intervalo entre as refeições?",o:[["Fico sonolenta quando bate a fome","😪"],["Fico cansada depois de comer","🥱"],["Tenho energia o tempo todo","⚡"]]},
+ {id:"habits",type:"multi",sec:"Alimentação",q:"Algum desses hábitos faz parte da sua rotina?",sub:"Marque quantas quiser",o:[["Gosto de um vinho","🍷"],["Como tarde da noite","🌙"],["Sou louca por doce","🍫"],["Belisco o dia inteiro","🍪"],["Não vivo sem refrigerante","🥤"],["Amo salgadinhos e coisas crocantes","🍟"],["Como olhando o celular ou a TV","📱"],["Nenhum desses","✅"]],none:"Nenhum desses"},
+ {type:"loading",t:"Analisando suas respostas...",p:"Perceber esses padrões já é o primeiro passo para uma vida mais saudável.",ms:2800},
+ {type:"blockers"},
+ // SAÚDE E SEGURANÇA
+ {id:"cond",type:"multi",sec:"Saúde e segurança",q:"Você tem diagnóstico de alguma destas condições?",sub:"Perguntamos isso só para a sua segurança.",o:[["Nenhuma","✅"],["Diabetes tipo 1",""],["Diabetes tipo 2",""],["Problema cardíaco",""],["Pressão alta",""],["Colesterol alto",""],["Questões de saúde mental",""],["Problema nos rins",""],["Câncer",""],["Problema gastrointestinal",""],["Deficiência física",""]],none:"Nenhuma"},
+ {id:"ed",type:"single",sec:"Saúde e segurança",q:"Você já teve diagnóstico de transtorno alimentar?",sub:"Perguntamos isso só para a sua segurança.",o:[["Sim",""],["Não",""]]},
+ {id:"meds",type:"single",sec:"Saúde e segurança",q:"Você usa algum remédio contínuo?",sub:"Perguntamos isso só para a sua segurança.",o:[["Sim",""],["Não",""]]},
+ {id:"preg",type:"single",sec:"Saúde e segurança",q:"Você está grávida?",sub:"Perguntamos isso só para a sua segurança.",o:[["Sim",""],["Não, mas estou amamentando",""],["Não, mas pretendo engravidar nos próximos 6 meses",""],["Não",""]]},
+ {id:"mob",type:"single",sec:"Saúde e segurança",q:"Você tem alguma limitação física ou de movimento?",sub:"Perguntamos isso só para a sua segurança.",o:[["Sim",""],["Não",""],["Prefiro não dizer",""]]},
+ {id:"meno",type:"single",sec:"Saúde e segurança",q:"Você já passou pela menopausa?",sub:"As mudanças hormonais mexem com o metabolismo e com as necessidades do corpo.",o:[["Não",""],["Estou passando agora",""],["Já passei",""],["Não sei",""],["Prefiro não dizer",""]]},
+ {type:"info",when:()=>["Estou passando agora","Já passei"].includes(S.meno),em:"🌸",t:"Emagrecer em cada fase da vida",p:["Na menopausa, as mudanças hormonais alteram onde o corpo acumula gordura e como ele responde à insulina, o que pode dificultar a perda de peso.","Movimento regular e boa alimentação ajudam a atravessar essa fase e alcançar suas metas."],b:"Continuar"},
+ // QUASE LÁ
+ {type:"info",em:"🏁",t:"Falta pouco!",p:["Você está a poucos passos de descobrir o caminho feito sob medida para conquistar o corpo que quer.","Agora vamos falar das suas motivações."],b:"Vamos terminar!"},
+ {id:"why",type:"single",sec:"Quase lá",q:"Por que você quer entrar em forma?",o:[["Para me sentir segura com meu corpo","💖"],["Para ter mais saúde e energia","⚡"],["Para mudar o visual","✨"],["Para as roupas vestirem melhor","👗"],["Outro motivo","➕"]]},
+ {id:"events",type:"multi",sec:"Quase lá",q:"Nos últimos anos, algum destes acontecimentos fez você ganhar peso?",sub:"Marque quantas quiser",o:[["Pressão no trabalho","💼"],["Rotina corrida","🏃‍♀️"],["Separação ou fim de relacionamento","💔"],["Gravidez ou pós-parto","🤰"],["Metabolismo mais lento com a idade","🐢"],["Estresse ou saúde mental","🧠"],["Aperto financeiro","💸"],["Pandemia","😷"],["Lesão ou limitação física","🩹"],["Nenhum desses","✅"]],none:"Nenhum desses"},
+ {id:"motiv",type:"multi",sec:"Quase lá",q:"O que te faz querer se exercitar?",sub:"Marque quantas quiser",o:[["Cuidar da saúde","❤️"],["Fortalecer a imunidade","🛡️"],["Melhorar a aparência","✨"],["Ganhar força e fôlego","💪"],["Perder a barriguinha pós-parto","🤱"],["Controlar o estresse e o humor","😌"],["Ser exemplo para quem eu amo","👩‍👧"],["Outro","➕"]]},
+ {id:"ready",type:"single",sec:"Quase lá",q:"E agora, quão motivada você está para chegar ao seu peso ideal?",o:[["100% pronta","🚀"],["Confiante de que vai dar certo","🙂"],["Ainda em dúvida","🤔"],["Indo com calma","🐢"]]},
+ {id:"past",type:"multi",sec:"Quase lá",q:"O que te fez desistir de treinar antes?",sub:"Marque quantas quiser",o:[["Não via resultado","📉"],["Emagrecia e engordava de novo","🔄"],["Não tinha um plano","🗺️"],["Os planos eram rígidos demais","📏"],["Faltava tempo","⏰"],["Orientação fraca","🤷‍♀️"],["Nunca tive obstáculos","✅"],["Outro motivo","➕"]]},
+ {type:"info",em:"🐢",t:"Por que tanta gente desiste de emagrecer?",p:["Porque começa acelerado demais.","Por isso o foco do programa é criar mudanças que duram, para você transformar o corpo e manter a saúde para sempre."],b:"Entendi"},
+ {id:"extra",type:"multi",sec:"Quase lá",q:"Enquanto montamos seu plano, o que mais você gostaria de melhorar?",sub:"O método vai além do emagrecimento: cuida também do humor, da saúde e do bem-estar.",o:[["Mais energia","⚡"],["Entender melhor a digestão","🫃"],["Menos estresse","😌"],["Mais flexibilidade","🤸‍♀️"],["Melhor postura","🧍‍♀️"],["Mais resistência","🏃‍♀️"],["Mais libido","❤️‍🔥"],["Imunidade mais forte","🛡️"]]},
+ {id:"pace",type:"single",sec:"Quase lá",q:"Seu plano está quase pronto! Em quanto tempo você quer ver resultado?",sub:"Ele respeita o seu ritmo.",o:[["O mais rápido possível","🚀"],["Devagar e sempre","🐢"],["Um meio-termo","⚖️"]]},
+ {type:"info",em:"🎉",t:"Muito bem!",p:["Você tem uma ótima base, e vamos usá-la para montar recomendações só para você."],b:"Tudo certo!"},
+ {type:"social"},
+ {type:"email"},
+ {type:"offer"}
+];
+
+/* ---------- MOTOR ---------- */
+let idx=0; const hist=[];
+const view=document.getElementById('view'),foot=document.getElementById('foot'),next=document.getElementById('next'),back=document.getElementById('back');
+const val=v=>typeof v==='function'?v():v;
+const visible=s=>!s.when||s.when();
+const countable=STEPS.filter(s=>s.type!=='offer').length;
+function setProg(){document.getElementById('prog').style.width=Math.min(100,(idx/countable)*100)+'%'}
+function setFoot(label,enabled,fn){if(!label){foot.hidden=true;return}foot.hidden=false;next.textContent=label;next.disabled=!enabled;next.onclick=fn}
+function go(){track('ViewContent',{content_name:'quiz_step_'+idx});let n=idx+1;while(n<STEPS.length&&!visible(STEPS[n]))n++;hist.push(idx);idx=n;render();window.scrollTo(0,0)}
+back.onclick=()=>{if(!hist.length)return;idx=hist.pop();render()};
+function bmi(){const h=S.height/100;return S.weight/(h*h)}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function render(){
+ const s=STEPS[idx];
+ document.getElementById('toptitle').textContent=s.type==='age'?C.PRODUCT_NAME:(s.sec||C.PRODUCT_NAME);
+ back.hidden=idx===0||['loading','offer'].includes(s.type);
+ document.getElementById('progwrap').style.visibility=(s.type==='age'||s.type==='offer')?'hidden':'visible';
+ setProg(); setFoot(null);
+ const R=renderers[s.type]; view.innerHTML='<div class="screen">'+R(s)+'</div>'; (after[s.type]||(()=>{}))(s);
+}
+const optBtn=(o,i,sel,ck)=>`<button class="opt${sel?' sel':''}" data-i="${i}">${o[1]?`<span class="em">${o[1]}</span>`:''}<span class="tx">${esc(o[0])}</span>${ck?'<span class="ck">✓</span>':''}</button>`;
+const tipHtml=t=>t?`<div class="tip"><b>${t[0]}</b>${t[1]}</div>`:'';
+
+const renderers={
+ age:()=>`<h1>Desafio de 21 dias de pilates na parede</h1><div class="lead">Monte seu plano a partir da sua <b>idade</b></div>
+  <div class="ages">${[["18-29","🧘‍♀️"],["30-39","🤸‍♀️"],["40-49","🏃‍♀️"],["50+","💃"]].map(a=>`<button class="age" data-v="${a[0]}"><div class="ph">${a[1]}</div><div class="lb">Idade: ${a[0]}<span>›</span></div></button>`).join('')}</div>`,
+ single:s=>`<h2>${esc(s.q)}</h2>${s.sub?`<p class="sub">${esc(s.sub)}</p>`:''}<div class="opts">${s.o.map((o,i)=>optBtn(o,i,S[s.id]===o[0])).join('')}</div><div id="tipbox"></div>`,
+ grid:s=>`<h2>${esc(s.q)}</h2><div class="grid2" style="margin-top:14px">${s.o.map((o,i)=>`<button class="gcard${S[s.id]===o[0]?' sel':''}" data-i="${i}"><span class="em">${o[1]}</span>${esc(o[0])}</button>`).join('')}</div>`,
+ multi:s=>`<h2>${esc(s.q)}</h2>${s.sub?`<p class="sub">${esc(s.sub)}</p>`:''}<div class="opts">${s.o.map((o,i)=>optBtn(o,i,(S[s.id]||[]).includes(o[0]),true)).join('')}</div>`,
+ info:s=>`<div class="info"><div class="big">${s.em}</div><h2>${esc(val(s.t))}</h2>${s.p.map(p=>`<p>${esc(val(p))}</p>`).join('')}</div>`,
+ yesno:s=>`<h2 class="center">Isso tem a ver com você?</h2><div class="stmt">“${esc(s.s)}”</div><div class="yn"><button data-v="Não"><span class="i" style="background:var(--bad)">✕</span>Não</button><button data-v="Sim"><span class="i" style="background:var(--ok)">✓</span>Sim</button></div>`,
+ good:()=>`<div class="info" style="padding-top:4px"><div class="kicker">${esc(C.PRODUCT_NAME)}</div><h2>Ótima notícia: você tem o perfil ideal para o programa!</h2><p>Suas respostas mostram que o pilates na parede combina com você. Agora é hora de ir atrás da sua meta.</p>
+  <div class="panel"><div class="chart"><svg viewBox="0 0 320 150"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#e5566b"/><stop offset=".5" stop-color="#f2a33a"/><stop offset="1" stop-color="#2fb67c"/></linearGradient></defs><path d="M10 30 C90 40 140 90 310 120" stroke="url(#g)" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="10" cy="30" r="7" fill="#e5566b"/><circle cx="310" cy="120" r="7" fill="#2fb67c"/><text x="14" y="16" font-size="11" font-weight="700" fill="#1f1d3a">Hoje</text><text x="262" y="145" font-size="11" font-weight="700" fill="#1f1d3a">Sua meta</text></svg></div>
+  <p style="font-size:12px;margin:0">Projeção com base no histórico de mulheres ${ageTxt()}</p></div>
+  <p style="margin-top:14px">Os primeiros sinais aparecem já na primeira semana. Mantenha o ritmo e chegue ao seu peso ideal!</p></div>`,
+ input:s=>`<h2>${esc(s.q)}</h2>${s.sub?`<p class="sub">${esc(s.sub)}</p>`:''}<div class="inp"><input id="num" type="number" inputmode="decimal" placeholder="0" value="${S[s.id]||''}"><span>${s.unit}</span></div><div class="err" id="err"></div>
+  ${s.consent?`<label class="consent"><input type="checkbox" id="cons" ${S.consent?'checked':''}><span>Autorizo o uso dos meus dados de saúde (como altura e peso) para montar meu programa, conforme a Política de Privacidade.</span></label>`:''}`,
+ loading:s=>`<div class="loader"><div class="ring"><svg width="150" height="150"><circle cx="75" cy="75" r="64" stroke="#e2dff0" stroke-width="12" fill="none"/><circle id="arc" cx="75" cy="75" r="64" stroke="url(#lg)" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="402" stroke-dashoffset="402"/><defs><linearGradient id="lg"><stop offset="0" stop-color="#8b6cf6"/><stop offset="1" stop-color="#b06cf0"/></linearGradient></defs></svg><b id="pct">0%</b></div><h2>${esc(s.t)}</h2><p>${esc(s.p)}</p></div>`,
+ bmi:()=>{const b=bmi(),pos=Math.max(2,Math.min(98,(b-15)/(40-15)*100));let cls,txt,col;
+  if(b<18.5){cls="Abaixo do peso";col="#5fb4f5";txt="Vamos focar em fortalecer e tonificar o corpo com segurança."}
+  else if(b<25){cls="IMC saudável";col="#2fb67c";txt="Você já tem uma base ótima para definir o corpo e chegar ao formato que quer."}
+  else if(b<30){cls="Sobrepeso";col="#f2a33a";txt="Com treinos leves e constantes, dá para chegar ao seu peso ideal sem sofrimento."}
+  else {cls="IMC alto";col="#e5566b";txt="Vamos começar devagar, com exercícios de baixo impacto que protegem suas articulações."}
+  const diff=Math.round((S.weight-S.target)*10)/10;
+  const meta=diff>0?`Perder ${diff} kg`:diff<0?`Ganhar ${-diff} kg`:"Manter o peso";
+  const lvl=S.walk==="Quase todo dia"||S.freq==="5 dias ou mais"?"Intermediário":"Iniciante";
+  const life=S.day==="Fico sentada quase o dia inteiro"?"Sedentária":"Principalmente ativa";
+  return `<div class="kicker">${esc(C.PRODUCT_NAME)}</div><h2 class="center">Seu ponto de partida</h2><div class="panel"><b style="font-size:14px">Índice de Massa Corporal (IMC)</b>
+  <div class="bmi-bar"><div class="bmi-pin" style="left:${pos}%">Você: ${b.toFixed(1)}</div></div><div class="bmi-lbl"><span>Abaixo</span><span>Normal</span><span>Sobrepeso</span><span>Alto</span></div>
+  <div class="badge" style="background:${col}22"><b style="color:${col}">${cls}</b><br>${txt}</div>
+  <div class="facts"><div class="fact"><small>Nível de atividade</small><b>${lvl}</b></div><div class="fact"><small>Estilo de vida</small><b>${life}</b></div><div class="fact"><small>Áreas-alvo</small><b>${esc((S.zones||["Corpo inteiro"]).slice(0,2).join(", "))}</b></div><div class="fact"><small>Meta</small><b>${meta}</b></div></div></div>`},
+ swipe:s=>`<h2 class="center">Gosta ou não gosta?</h2><div class="swipe"><div class="em">${s.em}</div><h3>${esc(s.ex)}</h3></div><div class="swipe-btns"><button data-v="Não gostei"><span>👎</span>Não gostei</button><button data-v="Indiferente"><span>😐</span>Indiferente</button><button data-v="Gostei"><span>👍</span>Gostei</button></div>`,
+ program:()=>{const foco=(S.goals||[])[0]||"Bem-estar";const lvl={"Leve e tranquila":"Leve","Quero suar um pouco":"Moderado","Pode pegar pesado":"Avançado"}[S.intensity]||"Personalizado";
+  return `<div class="kicker">${esc(C.PRODUCT_NAME)}</div><h2 class="center">Seu programa em detalhes</h2><div class="panel"><small style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Nível de dificuldade</small><h2 style="color:var(--brand);margin:4px 0 6px">${lvl}</h2><p style="font-size:13px;color:var(--muted);line-height:1.5">Este nível acompanha seu condicionamento atual: começa leve e evolui aos poucos.</p>
+  <div class="facts"><div class="fact"><small>Local</small><b>${esc(S.place==="Tanto faz"||!S.place?"Em casa":S.place)}</b></div><div class="fact"><small>Duração</small><b>${esc(S.time&&S.time!=="Não sei ainda"?S.time:"10 a 15 minutos")}</b></div><div class="fact"><small>Frequência</small><b>${S.freq==="5 dias ou mais"?"5x/semana":S.freq==="2 a 4 dias"?"3x/semana":"2x/semana"}</b></div><div class="fact"><small>Foco</small><b>${esc(foco)}</b></div></div></div>`},
+ blockers:()=>{let sl=20,em=20,st=20,au=15;
+  if(["Menos de 5","Entre 5 e 6"].includes(S.sleep))sl+=20; if((S.sleepIssues||[]).filter(x=>x!=="Não, durmo bem").length)sl+=10;
+  em+=Math.min(20,(S.habits||[]).filter(x=>x!=="Nenhum desses").length*5); if(S.between==="Fico sonolenta quando bate a fome")em+=5;
+  if(S.energy==="Que energia? Vivo cansada")st+=10; if(S.day==="Fico sentada quase o dia inteiro")st+=5;
+  if(S.st2==="Sim")au+=8; if(S.st3==="Sim")au+=7;
+  const tot=sl+em+st+au; const arr=[["Sono ruim",sl],["Fome emocional",em],["Excesso de tarefas e estresse",st],["Autocobrança",au]].map(a=>[a[0],Math.round(a[1]/tot*100)]).sort((a,b)=>b[1]-a[1]);
+  const fix=100-arr.reduce((s,a)=>s+a[1],0);arr[0][1]+=fix;
+  const D={"Sono ruim":"Seu corpo está descansando menos do que precisa, e isso desregula fome, energia e metabolismo. Não é falta de força de vontade, é biologia. Vamos criar hábitos simples para você dormir melhor e retomar o controle.","Fome emocional":"Você come mais quando está cansada, ansiosa ou entediada, e isso sabota o resultado sem você perceber. Vamos trabalhar rotinas simples que diminuem a vontade de beliscar.","Excesso de tarefas e estresse":"A rotina puxada deixa o cortisol alto, o que favorece o acúmulo de gordura na barriga. Treinos curtos e respiração vão te ajudar a baixar esse nível.","Autocobrança":"Você é exigente demais consigo mesma e desiste quando não vê perfeição. Nosso método é feito de pequenas vitórias, para você seguir em frente sem culpa."};
+  window.__bars=arr;
+  return `<h2 class="center">O que está travando seu emagrecimento</h2><p class="sub center">A partir das suas respostas, identificamos os fatores que mais atrapalham a sua perda de peso.</p>
+  <div class="panel bars"><b style="font-size:14px">O que te impede?</b>${arr.map(a=>`<div class="row"><div><span>${a[0]}</span><span>${a[1]}%</span></div><div class="track"><div class="fill" data-w="${a[1]}"></div></div></div>`).join('')}</div>
+  <div class="tip"><b>${arr[0][0]}</b>${D[arr[0][0]]}</div><p class="sub center" style="margin-top:12px">Vamos usar isso para montar um programa que funcione para você.</p>`},
+ social:()=>`<div class="loader" style="padding-top:10px"><div class="kicker">${esc(C.MEMBERS)} alunas</div><h2>Mulheres como você já estão treinando em casa</h2>
+  <div class="test"><div class="stars">★★★★★</div><p style="margin-top:6px">[DEPOIMENTO REAL DE ALUNA AQUI — cole aqui um depoimento verdadeiro do seu produto]</p><b style="display:block;margin-top:8px;font-size:12px">— Nome da aluna</b></div>
+  <div class="ring" style="width:110px;height:110px"><svg width="110" height="110"><circle cx="55" cy="55" r="46" stroke="#e2dff0" stroke-width="10" fill="none"/><circle id="arc" cx="55" cy="55" r="46" stroke="#8b6cf6" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289"/></svg><b id="pct" style="font-size:22px">0%</b></div><p>Montando seu programa personalizado de pilates...</p></div>`,
+ email:()=>`<div class="kicker">${esc(C.PRODUCT_NAME)}</div><h2 class="center">Seu plano de ação está pronto</h2><p class="sub center">Coloque seu e-mail para receber seu programa de treino personalizado</p>
+  <input class="email" id="em" type="email" inputmode="email" autocomplete="email" placeholder="Seu melhor e-mail" value="${esc(S.email||'')}"><div class="err" id="err"></div>
+  <p class="center" style="margin-top:14px;font-weight:800;font-size:20px">${esc(C.MEMBERS)}<br><span style="font-size:13px;font-weight:600;color:var(--muted)">de mulheres já fazem parte</span></p>
+  <p class="legal">Ao informar seu e-mail, você pode receber conteúdos e ofertas do programa. Dá para cancelar quando quiser. O uso está sujeito aos Termos de Uso e à Política de Privacidade.</p>`,
+ offer:()=>{const diff=Math.round((S.weight-S.target)*10)/10;
+  return `<div class="offer"><div class="kicker">Seu plano personalizado</div><h2>${diff>0?`Seu plano para perder ${diff} kg está pronto!`:"Seu plano personalizado está pronto!"}</h2>
+  <div class="panel"><div class="facts" style="margin-top:0"><div class="fact"><small>Hoje</small><b>${S.weight} kg</b></div><div class="fact"><small>Meta</small><b style="color:var(--ok)">${S.target} kg</b></div></div>
+  <ul class="list"><li>Desafio de 21 dias de pilates na parede, passo a passo</li><li>Treinos de ${esc(S.time&&S.time!=="Não sei ainda"?S.time:"10 a 15 minutos")} para fazer em casa</li><li>Foco em ${esc((S.zones||["corpo inteiro"]).join(", ").toLowerCase())}</li><li>Rotina para dormir melhor e reduzir a fome emocional</li><li>Sem equipamento, direto do celular</li></ul>
+  <div class="price"><s>De ${esc(C.PRICE_FROM)}</s><b>${esc(C.PRICE_TO)}</b><small>pagamento único</small></div></div>
+  <div class="guarantee"><span>🛡️</span><div><b>Garantia de 7 dias</b><br>Se não gostar, devolvemos 100% do seu dinheiro.</div></div></div>`}
+};
+
+const after={
+ age:()=>view.querySelectorAll('.age').forEach(b=>b.onclick=()=>{S.age=b.dataset.v;track('Lead',{content_name:'quiz_start'});go()}),
+ single:s=>{view.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{S[s.id]=s.o[b.dataset.i][0];view.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',x===b));
+   if(s.tip){document.getElementById('tipbox').innerHTML=tipHtml(s.tip);setFoot('Avançar',true,go)}else setTimeout(go,250)});
+   if(s.tip&&S[s.id]){document.getElementById('tipbox').innerHTML=tipHtml(s.tip);setFoot('Avançar',true,go)}},
+ grid:s=>view.querySelectorAll('.gcard').forEach(b=>b.onclick=()=>{S[s.id]=s.o[b.dataset.i][0];b.classList.add('sel');setTimeout(go,250)}),
+ multi:s=>{const sync=()=>setFoot('Avançar',(S[s.id]||[]).length>0,go);
+   view.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=s.o[b.dataset.i][0];let a=S[s.id]||[];
+     if(a.includes(v))a=a.filter(x=>x!==v);else{ if(s.none&&v===s.none)a=[v];else a=a.filter(x=>x!==s.none).concat(v)}
+     S[s.id]=a;view.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',a.includes(s.o[x.dataset.i][0])));sync()});sync()},
+ info:s=>setFoot(s.b||'Continuar',true,go),
+ good:()=>setFoot('Quero isso!',true,go),
+ yesno:s=>view.querySelectorAll('.yn button').forEach(b=>b.onclick=()=>{S[s.id]=b.dataset.v;go()}),
+ input:s=>{const i=document.getElementById('num'),c=document.getElementById('cons'),e=document.getElementById('err');
+   const ok=()=>{const v=parseFloat(String(i.value).replace(',','.'));const inR=v>=s.min&&v<=s.max;e.textContent=i.value&&!inR?`Digite um valor entre ${s.min} e ${s.max} ${s.unit}`:'';return inR&&(!c||c.checked)};
+   const upd=()=>setFoot('Avançar',ok(),()=>{S[s.id]=parseFloat(String(i.value).replace(',','.'));if(c)S.consent=true;go()});
+   i.oninput=upd;if(c)c.onchange=upd;upd();setTimeout(()=>i.focus(),200)},
+ loading:s=>runRing(s.ms||3000,402),
+ social:()=>runRing(4000,289),
+ bmi:()=>setFoot('Continuar',true,go),
+ swipe:s=>view.querySelectorAll('.swipe-btns button').forEach(b=>b.onclick=()=>{S[s.id]=b.dataset.v;go()}),
+ program:()=>setFoot('Continuar',true,go),
+ blockers:()=>{setTimeout(()=>view.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%'),80);setFoot('Continuar',true,go)},
+ email:()=>{const i=document.getElementById('em'),e=document.getElementById('err');const ok=()=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(i.value.trim());
+   const upd=()=>setFoot('Ver meu plano',ok(),()=>{S.email=i.value.trim();track('CompleteRegistration',{content_name:'quiz_email'});go()});i.oninput=upd;upd()},
+ offer:()=>setFoot('Quero meu plano agora',true,checkout)
+};
+function runRing(ms,len){const arc=document.getElementById('arc'),pct=document.getElementById('pct');const t0=performance.now();
+ (function f(t){const p=Math.min(1,(t-t0)/ms);arc.style.strokeDashoffset=len*(1-p);pct.textContent=Math.round(p*100)+'%';if(p<1)requestAnimationFrame(f);else setTimeout(go,350)})(t0)}
+function checkout(){
+ track('InitiateCheckout',{content_name:C.PRODUCT_NAME});
+ try{const u=new URL(C.CHECKOUT_URL);const q=new URLSearchParams(location.search);q.forEach((v,k)=>{if(!u.searchParams.has(k))u.searchParams.set(k,v)});if(S.email)u.searchParams.set('email',S.email);location.href=u.toString()}
+ catch(e){location.href=C.CHECKOUT_URL}
+}
+render();
+</script>
+</body>
+</html>
